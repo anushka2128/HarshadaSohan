@@ -1273,7 +1273,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 
   /* ===== Blessings wall: Firebase Firestore shared store with local fallback ===== */
   var db=null,auth=null,currentUid=null,lastWallItems=[];
-  var COLLECTION='harshada_blessings';
+  var COLLECTION='blessings';
 
   function lsGet(k){try{return JSON.parse(localStorage.getItem(k)||'[]');}catch(_){return [];}}
   function lsAdd(k,v){try{var a=lsGet(k);a.unshift(v);localStorage.setItem(k,JSON.stringify(a.slice(0,100)));}catch(_){}}
