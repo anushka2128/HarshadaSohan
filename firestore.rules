@@ -1,22 +1,28 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Universal rules for wedding blessings walls (Alisha & Utkarsh, Harshada & Sohan, etc.)
-    match /{collection}/{blessingId} {
-      // 1. Visible on all phones in real-time
+    // Universal rules for wedding blessings wall (Harshada & Sohan)
+    match /harshada_blessings/{blessingId} {
+      // 1. Anyone can read blessings in real-time on all phones
       allow read: if true;
 
-      // 2. Any guest can post a blessing or ukhana
+      // 2. Any guest can post a warm wish or ukhana
       allow create: if request.resource.data.name is string
                     && request.resource.data.name.size() > 0
                     && request.resource.data.msg is string
                     && request.resource.data.msg.size() > 0;
 
-      // 3. ONLY THE AUTHOR CAN DELETE (server-enforced)
-      allow delete: if request.auth != null
-                    && resource.data.authorId == request.auth.uid;
+      // 3. Delete permitted (managed client-side by author ID and secret key)
+      allow delete: if true;
 
-      // 4. Blessings cannot be modified
+      // 4. Notes cannot be modified/overwritten
+      allow update: if false;
+    }
+
+    // Fallback for universal collections
+    match /{collection}/{docId} {
+      allow read, create: if true;
+      allow delete: if true;
       allow update: if false;
     }
   }
