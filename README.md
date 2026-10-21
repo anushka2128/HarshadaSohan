@@ -1,35 +1,34 @@
-# Harshada & Sohan – wedding invitation (Netlify)
+# Harshada & Sohan – Wedding Invitation
 
-## What is in this folder
-- `public/index.html` – the invitation (change the date, venue link and names near the top of the `<script>`, in `CFG`)
-- `public/img/` – the card artwork
-- `netlify/functions/blessings.mjs` – the shared blessings wall (stored in Netlify Blobs, nothing else to set up)
-- `netlify/lib/wall.mjs` – the rules for posting and deleting
+Interactive digital wedding invitation for **Harshada Shinde & Sohan Chougule**.
 
-## Deploy
-The wall needs the function, so do NOT drag-and-drop only the `public` folder.
+## Project Structure
+- `public/index.html` – The complete interactive invitation (envelope zipper opening, automatic Page 2 preview illusion, scratch-and-reveal lagna muhurat, countdown, event schedule, Google Maps & calendar integration, realtime blessings wall, and Excel export).
+- `public/firebase-config.js` – Firebase Firestore configuration for realtime live blessings and anonymous authentication.
+- `public/img/` – Maharashtrian wedding artwork (bells, couple arch, muhurat lamps, sohola arch, watercolor florals).
+- `public/Sajiri-Gojiri.mp3` – Background wedding music with audio controls and Web Audio synthesiser fallback.
+- `firestore.rules` – Firestore security rules allowing public reads, anonymous posts, and author-only deletions.
+- `netlify.toml` – Netlify deployment configuration (`publish = "public"`).
 
-**Option A – GitHub (no tools needed)**
-1. Put this whole folder in a new GitHub repository.
-2. In Netlify: Add new site, Import an existing project, choose the repository. Settings come from `netlify.toml`.
-3. Deploy, then share the `https://...netlify.app` link.
+## Deployment
 
-**Option B – Netlify CLI**
+### Option A – Netlify (Recommended)
+1. Push this repository to GitHub.
+2. In Netlify, select **Add new site** > **Import an existing project** > choose your repository.
+3. The publish directory is set to `public` in `netlify.toml`.
+4. Deploy the site and share the link.
+
+### Option B – Firebase Hosting
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init hosting
+firebase deploy
 ```
-npm install
-npm install -g netlify-cli
-netlify login
-netlify deploy --prod
-```
-(publish directory: `public`)
 
-## How the wall behaves
-- Anyone with the link can post. No sign-in, no accounts.
-- Everyone sees the same wall: the 10 newest notes, newest on top. When an 11th arrives the oldest one drops off the list. The wall refreshes by itself every 15 seconds.
-- Up to 100 notes are kept behind the scenes; beyond that the oldest are removed.
-- When someone posts, their browser keeps a private delete key for that note. Only that browser shows a Delete button for it, and the server refuses a delete without the key. Fix a spelling mistake by deleting and posting again.
-- If someone clears their browser data or switches phone, they can no longer delete their old notes.
-
-## Moderating as the owner (optional)
-Netlify, Site configuration, Environment variables: add `ADMIN_KEY` with a long secret, then redeploy.
-Open `https://your-site.netlify.app/?admin=YOUR_SECRET` once and every note shows a Delete button in that tab.
+## Features
+- **Royal Envelope Opening**: Interactive gold seal and zipper slide-to-open gesture with twinkling dust and flower petal shower.
+- **Automatic Preview Peek**: After the envelope opens and Page 1 entrance finishes, the invitation automatically and smoothly scrolls to peek at Page 2, naturally showing guests to scroll down.
+- **Scratch Card Shubh Muhurat**: Interactive touch/mouse scratch card revealing wedding date and time, with swipeable panels and automated demo.
+- **Realtime Blessings & Ukhane Wall**: Powered by Firebase Firestore with offline fallback; guests can post blessings or rhyming ukhane, delete their own posts, and export all messages to a formatted Excel (.xlsx) spreadsheet.
+- **Responsive Layout**: Designed for all mobile devices, tablets, and desktop displays with authentic Paithani border styling.

@@ -209,18 +209,18 @@ a{color:inherit}
 
 /* Screen 4: white arch, Sohola timeline */
 .s-sohola{aspect-ratio:736/1308;background-image:var(--img-sohola)}
-.s-sohola .cnt{left:22.5%;right:22.5%;top:17.6%;bottom:27.6%;align-items:stretch}
-.s-sohola h2{font:400 7.8cqw/1.75 var(--yatra);text-align:center;padding-inline:.12em}
-.s-sohola .date{font:italic 500 3.6cqw/1.2 var(--display);color:var(--muted);text-align:center}
-.tl{list-style:none;margin:2.6cqw 0 0;padding:0;text-align:left;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-.tl li{position:relative;display:grid;grid-template-columns:7.6cqw minmax(0,1fr);gap:2.6cqw;align-items:start}
-.tl li:not(:last-child)::before{content:"";position:absolute;left:3.8cqw;top:9.4cqw;bottom:-3.2cqw;width:0;border-left:1.5px dotted var(--gold)}
-.ic{width:7.6cqw;height:7.6cqw;border:1px solid var(--gold-lt);outline:1px solid var(--sand);outline-offset:3px;border-radius:50%;display:grid;place-items:center;color:var(--kumkum);background:var(--ivory)}
-.ic svg{width:4.6cqw;height:4.6cqw;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-.tl .mr{font:400 3.2cqw/1.45 var(--yatra);color:var(--maroon);font-kerning:normal;letter-spacing:0}
-.tl h3{font:italic 600 3.4cqw/1.25 var(--display);color:var(--sage-ink);margin-top:.2cqw}
-.tl .when{font:600 2.5cqw/1.3 var(--cin);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-top:.9cqw}
-.tl .note{font:italic 500 3.3cqw/1.3 var(--display);color:var(--muted);margin-top:.2cqw}
+.s-sohola .cnt{left:21%;right:21%;top:14.5%;bottom:29.5%;align-items:stretch}
+.s-sohola h2{font:400 6.6cqw/1.4 var(--yatra);text-align:center;padding-inline:.12em}
+.s-sohola .date{font:italic 500 2.9cqw/1.15 var(--display);color:var(--muted);text-align:center}
+.tl{list-style:none;margin:1.4cqw 0 0;padding:0;text-align:left;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.tl li{position:relative;display:grid;grid-template-columns:5.8cqw minmax(0,1fr);gap:2cqw;align-items:start}
+.tl li:not(:last-child)::before{content:"";position:absolute;left:2.9cqw;top:6.8cqw;bottom:-1.8cqw;width:0;border-left:1.5px dotted var(--gold)}
+.ic{width:5.8cqw;height:5.8cqw;border:1px solid var(--gold-lt);outline:1px solid var(--sand);outline-offset:2px;border-radius:50%;display:grid;place-items:center;color:var(--kumkum);background:var(--ivory)}
+.ic svg{width:3.4cqw;height:3.4cqw;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.tl .mr{font:600 2.9cqw/1.2 var(--deva);color:var(--maroon);letter-spacing:0}
+.tl h3{font:italic 600 2.9cqw/1.15 var(--display);color:var(--sage-ink);margin-top:.05cqw}
+.tl .when{font:600 2.1cqw/1.15 var(--cin);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin-top:.35cqw}
+.tl .note{font:italic 500 2.5cqw/1.15 var(--display);color:var(--muted);margin-top:.05cqw}
 .tl .note .deva{letter-spacing:0}
 
 /* Screen 5: venue on the palace-and-peacock artwork */
@@ -232,7 +232,7 @@ a{color:inherit}
 .s-venue h3{font:400 8.6cqw/1.15 var(--script);padding:.2cqw .8cqw}
 .addr{font:italic 500 3.8cqw/1.3 var(--display);color:var(--muted);max-width:48cqw;margin-top:.4cqw}
 .btns{display:flex;flex-wrap:wrap;justify-content:center;gap:2cqw;width:100%;margin-top:3cqw}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:1.4cqw;min-height:44px;padding:0 2.6cqw;flex:1 1 24cqw;max-width:30cqw;border-radius:999px;white-space:nowrap;
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:1.4cqw;min-height:44px;padding:0 2.6cqw;flex:1 1 24cqw;max-width:36cqw;min-width:25cqw;border-radius:999px;white-space:nowrap;
   font:600 2.9cqw/1 var(--body);text-decoration:none;cursor:pointer;border:1px solid var(--sage-deep);color:var(--sage-ink);background:rgba(251,246,233,.7);text-align:center}
 .btn.fill{background:var(--sage-ink);color:var(--ivory);border-color:var(--sage-ink);box-shadow:0 8px 14px -8px rgba(30,45,28,.7),inset 0 1px 0 rgba(255,255,255,.18)}
 .btn svg{width:3.6cqw;height:3.6cqw;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -288,8 +288,6 @@ form .btn svg{width:18px;height:18px}
 }
 .bt-export:hover{background:#fff;border-color:var(--gold);color:var(--kumkum);box-shadow:0 6px 16px -4px rgba(60,40,10,.25)}
 .bt-export:disabled{opacity:.5;cursor:wait}
-.bl .del{margin-top:12px;min-height:36px;padding:0 16px;border:1px solid var(--sand-2);border-radius:999px;background:transparent;color:var(--kumkum);font:600 12px var(--body);letter-spacing:.04em;cursor:pointer}
-.bl .del.arm{background:var(--kumkum);border-color:var(--kumkum);color:var(--ivory)}
 input:disabled,select:disabled,textarea:disabled,.btn:disabled{opacity:.55;cursor:not-allowed}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .empty{border:1px dashed var(--sand-2);padding:20px;text-align:center;color:var(--muted);font:italic 500 18px/1.4 var(--display);background:rgba(255,255,255,.6)}
@@ -333,15 +331,8 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 /* Envelope Seal Top Shloka Text */
 .seal .top{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);white-space:nowrap;font:400 clamp(15px,4.2vw,20px)/1.4 "Tiro Devanagari Marathi","Mukta",serif;color:var(--gold-lt);text-shadow:0 2px 6px rgba(30,6,10,.9);letter-spacing:0}
 
-/* Illusion of Screen 2 rising from down to up */
-.s-couple.illusion-peek{animation:illusionRise 1.6s cubic-bezier(.22,1,.36,1) forwards;z-index:10}
-@keyframes illusionRise{
-  0%{transform:translateY(0);box-shadow:none}
-  35%{transform:translateY(-130px);box-shadow:0 -25px 45px rgba(74,22,32,.45)}
-  65%{transform:translateY(-130px);box-shadow:0 -25px 45px rgba(74,22,32,.45)}
-  100%{transform:translateY(0);box-shadow:none}
-}
-.scrollhint.highlight{transform:translateX(-50%) scale(1.14);background:var(--kumkum);color:var(--ivory);box-shadow:0 0 25px rgba(232,163,23,.95)}
+/* Hint Highlight Animation for Automatic Peek */
+.scrollhint.highlight{transform:translateX(-50%) scale(1.12);background:var(--kumkum);color:var(--ivory);box-shadow:0 0 22px rgba(232,163,23,.95)}
 
 /* Festive Marigold Toran / Garland */
 #garland{position:fixed;left:0;right:0;top:0;height:48px;z-index:62;pointer-events:none;transform-origin:50% 0;animation:sway 6s ease-in-out infinite alternate;filter:drop-shadow(0 2px 4px rgba(60,20,10,.35))}
@@ -423,6 +414,8 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   </button>
 </section>
 
+<div class="paithani" aria-hidden="true"></div>
+
 <!-- ================= SCREEN 2 · THE COUPLE ================= -->
 <section class="scr s-couple" aria-label="The couple">
   <div class="cnt">
@@ -468,9 +461,9 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
           <!-- Panel 2: Time & Muhurat -->
           <div class="swp sw-time">
             <div class="lab">Shubh Lagna Muhurat</div>
-            <div class="tm-hero gradtext">11:00 AM</div>
-            <div class="tm-sub">MORNING ONWARDS</div>
-            <div class="nakshatra deva" lang="mr">हस्त नक्षत्र · शुभ मुहूर्त</div>
+            <div class="tm-hero gradtext">05:43 PM</div>
+            <div class="tm-sub">EVENING ONWARDS</div>
+            <div class="nakshatra deva" lang="mr">सायं ५:४३ वा. · शुभ मुहूर्त</div>
           </div>
         </div>
         <div class="swd" aria-hidden="true"><i class="on"></i><i></i></div>
@@ -587,8 +580,8 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 
   /* ===== Update these when details are final ===== */
   var CFG={
-    start:'2026-12-02T11:00:00+05:30',
-    calStart:'20261202T110000', calEnd:'20261202T170000',
+    start:'2026-12-02T17:43:00+05:30',
+    calStart:'20261202T113000', calEnd:'20261202T223000',
     venueName:'[Venue name]', venueAddress:'[Venue name / address, to be updated]',
     mapsUrl:'https://maps.app.goo.gl/xd1gktLQ3yrsraC87?g_st=aw'
   };
@@ -630,8 +623,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
     '<svg viewBox="-66 -66 132 132" aria-hidden="true"><defs><radialGradient id="sg" cx="40%" cy="30%" r="80%"><stop offset="0" stop-color="#FFFCF1"/><stop offset="1" stop-color="#EFE2BD"/></radialGradient></defs>'+
     '<path d="'+scallop(18,62)+'" fill="url(#sg)" stroke="#B58E36" stroke-width="2"/>'+
     '<circle r="47" fill="none" stroke="#DDBF70" stroke-width="1"/>'+
-    '<g transform="translate(0 -6)" fill="none" stroke="#B58E36" stroke-width="1.3" stroke-linecap="round"><path d="M0 -36C2 -33 3 -31 4 -29C14 -26 18 -17 14 -11C10 -6 -10 -6 -14 -11C-18 -17 -14 -26 -4 -29C-3 -31 -2 -33 0 -36Z" fill="#F6E7B6"/><path d="M0 -29V-8M-5 -28C-9 -20 -9 -12 -8 -8M5 -28C9 -20 9 -12 8 -8"/></g>'+
-    '<text x="0" y="22" text-anchor="middle" font-family="Tiro Devanagari Marathi,serif" font-size="8.4" fill="#8C2331">॥ श्री गणेशाय नमः ॥</text></svg>');
+    '<g transform="translate(0 -2)" fill="none" stroke="#B58E36" stroke-width="1.3" stroke-linecap="round"><path d="M0 -36C2 -33 3 -31 4 -29C14 -26 18 -17 14 -11C10 -6 -10 -6 -14 -11C-18 -17 -14 -26 -4 -29C-3 -31 -2 -33 0 -36Z" fill="#F6E7B6"/><path d="M0 -29V-8M-5 -28C-9 -20 -9 -12 -8 -8M5 -28C9 -20 9 -12 8 -8"/></g></svg>');
 
   var W=0,H=0,y0=0,yEnd=0,cur=0,opened=false,anim=null;
   function setY(y){
@@ -677,8 +669,8 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
         var s=P('snd');if(s&&audioOK)s.hidden=false;
         var d=P('nav-dock');if(d)d.classList.remove('hide');
         setTimeout(function(){if(!scratched&&!revealed)paintCard();}, 300);
-        // Trigger the illusion of second slide peeking from down to up!
-        setTimeout(triggerSecondSlidePeek, 1200);
+        // Automatically scroll to peek at Page 2 once Page 1 entrance is complete!
+        setTimeout(triggerAutoScrollPeek, 1300);
       },reduce?0:820);
     });
   }
@@ -958,35 +950,63 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   hint.addEventListener('click',function(){var n=document.querySelector('.s-couple');if(n)n.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});});
   window.addEventListener('scroll',function(){hint.classList.toggle('gone',window.scrollY>40);},{passive:true});
 
-  /* ===== Illusion of Second Slide Peeking Upward ===== */
-  var peekIdleTimer=null;
-  function triggerSecondSlidePeek(){
-    if(window.scrollY>40||reduce)return;
-    var couple=document.querySelector('.s-couple');
-    var hintEl=P('hint');
-    if(!couple)return;
-    couple.classList.add('illusion-peek');
-    if(hintEl)hintEl.classList.add('highlight');
-    setTimeout(function(){
-      couple.classList.remove('illusion-peek');
-      if(hintEl)hintEl.classList.remove('highlight');
-      scheduleNextPeek();
-    },1600);
+  /* ===== Automatic Peek Scroll from Page 1 to Page 2 ===== */
+  var autoPeekActive=false, autoPeekTimer=null;
+
+  function cancelAutoPeek(){
+    if(autoPeekTimer){clearTimeout(autoPeekTimer);autoPeekTimer=null;}
+    autoPeekActive=false;
+    var hintEl=P('hint');if(hintEl)hintEl.classList.remove('highlight');
   }
+
+  function triggerAutoScrollPeek(){
+    if(reduce || window.scrollY > 30 || autoPeekActive) return;
+    autoPeekActive = true;
+
+    var couple = document.querySelector('.s-couple');
+    var hintEl = P('hint');
+    if(!couple){ autoPeekActive = false; return; }
+
+    var coupleTop = couple.offsetTop || 0;
+    var peekScroll = Math.max(180, Math.min(coupleTop - 100, window.innerHeight * 0.44));
+
+    if(hintEl) hintEl.classList.add('highlight');
+
+    // Smooth automatic scroll down towards Page 2
+    window.scrollTo({ top: peekScroll, behavior: 'smooth' });
+
+    // Hold for 1.3 seconds so the viewer clearly perceives Page 2 peeking up
+    autoPeekTimer = setTimeout(function(){
+      if(!autoPeekActive || window.scrollY < 20){
+        if(hintEl) hintEl.classList.remove('highlight');
+        autoPeekActive = false;
+        return;
+      }
+      // Smoothly scroll back up to Page 1
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if(hintEl) hintEl.classList.remove('highlight');
+
+      setTimeout(function(){
+        autoPeekActive = false;
+        scheduleNextPeek();
+      }, 700);
+    }, 1300);
+  }
+
   function scheduleNextPeek(){
-    clearTimeout(peekIdleTimer);
-    if(window.scrollY>40||reduce)return;
-    peekIdleTimer=setTimeout(triggerSecondSlidePeek,7500);
+    cancelAutoPeek();
+    if(reduce || window.scrollY > 30) return;
+    autoPeekTimer = setTimeout(triggerAutoScrollPeek, 8500);
   }
-  window.addEventListener('scroll',function(){
-    if(window.scrollY>40){
-      clearTimeout(peekIdleTimer);
-      var couple=document.querySelector('.s-couple');
-      if(couple)couple.classList.remove('illusion-peek');
-      var hintEl=P('hint');
-      if(hintEl)hintEl.classList.remove('highlight');
+
+  // Cancel immediately if the user touches the screen, wheels, or manually navigates
+  window.addEventListener('touchstart', cancelAutoPeek, {passive: true});
+  window.addEventListener('wheel', cancelAutoPeek, {passive: true});
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 40 && !autoPeekActive){
+      cancelAutoPeek();
     }
-  },{passive:true});
+  }, {passive: true});
 
   /* ===== Swipeable Date & Time Widget with 2-3 Demo Swipes ===== */
   var muhSw=P('muh-sw');
@@ -1102,16 +1122,18 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 
   /* ===== Sohola timeline + venue ===== */
   var ICONS={
-    kalash:'<path d="M8 8h8M9 8c-2.4 3-2.4 8 .8 10h4.4c3.2-2 3.2-7 .8-10"/><path d="M10 18v2h4v-2M12 8V4.5M10 6c.4-2 3.6-2 4 0"/>',
+    haldi:'<path d="M8 9h8M9 9c-2.4 2.8-2.4 7 .8 9h4.4c3.2-2 3.2-6.2 .8-9"/><path d="M10 18v1.5h4V18M12 9V5.5M10 7c.4-1.8 3.6-1.8 4 0"/>',
+    varaat:'<path d="M4 15l10-6v8l-10-6zM14 11h3a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-3M6 18v3M18 9v6"/>',
     conch:'<path d="M5 15.5c0-5.2 4-9 9-9 3 0 5 2 5 5 0 4-4 7-8 7-4 0-6-1.2-6-3z"/><path d="M9 14c0-2 2-4 4-4 1 0 2 1 2 2"/><path d="M5 15.5L3.5 17"/>',
-    agni:'<path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-9z"/><path d="M6 20.5h12"/>',
-    diya:'<path d="M4 14h16c0 4-3.5 6-8 6s-8-2-8-6z"/><path d="M12 4c1.6 2 2.4 3 2.4 4.4a2.4 2.4 0 0 1-4.8 0C9.6 7 10.4 6 12 4z"/>'
+    dinner:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 7v10"/>',
+    reception:'<path d="M4 14h16c0 4-3.5 6-8 6s-8-2-8-6z"/><path d="M12 4c1.6 2 2.4 3 2.4 4.4a2.4 2.4 0 0 1-4.8 0C9.6 7 10.4 6 12 4z"/>'
   };
   var STEPS=[
-    ['kalash','साखरपुडा व सीमंतपूजन','Sakharpuda &amp; Simant Pujan','Morning rituals',''],
-    ['conch','शुभ मंगलाष्टके व अंतरपाट','Shubh Mangalashtake &amp; Antarpat','11:00 AM',''],
-    ['agni','कन्यादान व सप्तपदी','Kanyadaan &amp; Saptapadi','Followed by lunch','Traditional pangat <span class="deva" lang="mr">(पारंपरिक पंगत)</span>'],
-    ['diya','स्वागत समारंभ व शुभाशीर्वाद','Reception &amp; Shubhashirwad','Evening celebrations','']
+    ['haldi','हळदी समारंभ','Haldi Ceremony','11:30 AM','Followed by lunch at 1:30 PM <span class="deva" lang="mr">(दुपारचे भोजन)</span>'],
+    ['varaat','वरात व वरप्रस्थान','Varaat &amp; Welcome','04:15 PM','Groom welcome at 5:00 PM <span class="deva" lang="mr">(सीमंतपूजन)</span>'],
+    ['conch','शुभ लग्न मुहूर्त','Shubh Lagna Muhurat','05:43 PM','मंगलाष्टके, अंतरपाट व कन्यादान <span class="deva" lang="mr">(लग्नविधी)</span>'],
+    ['dinner','प्रीतिभोजन','Dinner Celebration','07:00 PM ONWARDS','Guest dinner starts at 7:00 PM <span class="deva" lang="mr">(स्नेहभोजन)</span>'],
+    ['reception','स्वागत समारंभ','Grand Reception','07:45 PM ONWARDS','Grand couple entry &amp; photo greetings']
   ];
   P('tl').innerHTML=STEPS.map(function(s){
     return '<li><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">'+ICONS[s[0]]+'</svg></div><div><div class="mr" lang="mr">'+s[1]+'</div><h3>'+s[2]+'</h3><div class="when">'+s[3]+'</div>'+(s[4]?'<div class="note">'+s[4]+'</div>':'')+'</div></li>';
@@ -1121,7 +1143,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   P('venue-addr').textContent=venueSet?CFG.venueAddress:'Tap Google Maps for the location and directions';
   P('maps').href=CFG.mapsUrl;
   P('cal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Wedding of Harshada & Sohan')+
-    '&dates='+CFG.calStart+'/'+CFG.calEnd+'&ctz=Asia/Kolkata&details='+encodeURIComponent('Lagna muhurat at 11:00 AM. Kanyadaan, Saptapadi and lunch follow, with the reception in the evening.')+
+    '&dates='+CFG.calStart+'/'+CFG.calEnd+'&ctz=Asia/Kolkata&details='+encodeURIComponent('Lagna Muhurat at 5:43 PM. Haldi at 11:30 AM (Lunch at 1:30 PM), Varaat at 4:15 PM (Groom welcome at 5:00 PM), guest dinner from 7:00 PM, and grand reception entry from 7:45 PM.')+
     '&location='+encodeURIComponent(venueSet?CFG.venueName+' '+CFG.venueAddress:CFG.mapsUrl);
 
   /* ===== Music: an original romantic raga-style tune (Bhoop) on bansuri, tanpura and soft tabla ===== */
@@ -1217,7 +1239,6 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   var snd=P('snd');
   var bgm=P('bgm');
   var useMp3=!!bgm;
-  var playing=false;
 
   function setPlaying(v){
     if(v===playing)return;
