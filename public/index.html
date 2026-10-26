@@ -524,7 +524,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
       <p class="eyebrow"><span class="deva">चि.</span> · वर · Groom</p>
       <h2 class="name gradtext">Sohan</h2>
       <p class="sur">Chougule</p>
-      <p class="parents">Son of Mr. <b>Kiran Baban Chougule</b> &amp; Mrs. <b>Rekha Baban Chougule</b></p>
+      <p class="parents">Son of Mr. <b>Kiran Baban Chougule</b> &amp; Mrs. <b>Rekha Kiran Chougule</b></p>
     </article>
   </div>
 </section>
@@ -712,19 +712,19 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
           </div>
 
           <div class="rsvp-field">
-            <label class="rsvp-label">Events You Are Joining</label>
+            <label class="rsvp-label">Ceremonies You Are Joining</label>
             <label class="event-item">
-              <input type="checkbox" id="ev-sangeet" value="Engagement & Sangeet - Dec 11">
+              <input type="checkbox" id="ev-haldi" value="Haldi Ceremony - Dec 2 (11:30 AM)">
               <div class="event-item-txt">
-                <strong>Engagement &amp; Sangeet</strong>
-                <span>Wednesday, 11 Dec 2026</span>
+                <strong>हळदी समारंभ · Haldi Ceremony</strong>
+                <span>Wednesday, 2 Dec 2026 · 11:30 AM (Lunch at 1:30 PM)</span>
               </div>
             </label>
             <label class="event-item">
-              <input type="checkbox" id="ev-wedding" value="Wedding Day - Dec 12" checked>
+              <input type="checkbox" id="ev-wedding" value="Lagna & Reception - Dec 2 (5:43 PM)" checked>
               <div class="event-item-txt">
-                <strong>Wedding Ceremony &amp; Reception</strong>
-                <span>Thursday, 12 Dec 2026 (Lagna: 5:43 PM)</span>
+                <strong>शुभ विवाह व स्वागत समारंभ · Lagna &amp; Reception</strong>
+                <span>Wednesday, 2 Dec 2026 · Muhurat 5:43 PM · Dinner 7:00 PM</span>
               </div>
             </label>
           </div>
@@ -1886,7 +1886,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
     var countDisp=P('rsvp-count-disp');
     var foodVeg=P('food-veg');
     var foodNonveg=P('food-nonveg');
-    var evSangeet=P('ev-sangeet');
+    var evHaldi=P('ev-haldi');
     var evWedding=P('ev-wedding');
     var btnRsvpSubmit=P('btn-rsvp-submit');
     var rsvpCalLink=P('rsvp-cal-link');
@@ -2015,7 +2015,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 
         var events=[];
         if(state.attending){
-          if(evSangeet&&evSangeet.checked)events.push(evSangeet.value);
+          if(evHaldi&&evHaldi.checked)events.push(evHaldi.value);
           if(evWedding&&evWedding.checked)events.push(evWedding.value);
         }
 
