@@ -358,6 +358,99 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 #nav-dock button:hover,#nav-dock button.active{background:var(--kumkum);color:var(--ivory)}
 @media (max-width:480px){#nav-dock button span{display:none}#nav-dock button{padding:8px 10px}#nav-dock button svg{width:16px;height:16px}}
 
+/* Floating RSVP FAB */
+#btn-fab-rsvp{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:66;display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:linear-gradient(135deg,var(--kumkum),#6b1522);color:var(--ivory);font:600 13px/1 var(--cin);letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(232,163,23,.5);box-shadow:0 6px 20px rgba(74,22,32,.35),0 0 12px rgba(232,163,23,.25);cursor:pointer;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease,opacity .3s ease}
+#btn-fab-rsvp:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 24px rgba(74,22,32,.45),0 0 16px rgba(232,163,23,.4)}
+#btn-fab-rsvp.hide{opacity:0;pointer-events:none;transform:translateY(20px)}
+#btn-fab-rsvp svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Admin Family View Pill */
+#btn-admin-pill{position:fixed;left:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:64;display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;background:rgba(251,246,233,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--sand-2);color:var(--sage-ink);font:600 11px/1 var(--cin);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px rgba(74,22,32,.12);transition:all .25s ease}
+#btn-admin-pill:hover{background:var(--ivory);color:var(--kumkum);border-color:var(--gold)}
+#btn-admin-pill.hide{opacity:0;pointer-events:none}
+#btn-admin-pill svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Modal Overlays & Sheets */
+.hs-modal-backdrop{position:fixed;inset:0;background:rgba(30,6,10,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:900;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.hs-modal-backdrop.open{opacity:1;pointer-events:auto}
+.hs-modal-card{position:relative;background:var(--ivory);border:1.5px solid var(--gold-ink);border-radius:18px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 16px 40px rgba(74,22,32,.35),0 0 25px rgba(232,163,23,.2);padding:26px 22px;color:var(--ink);transform:translateY(20px) scale(.98);transition:transform .3s cubic-bezier(.22,.61,.36,1);overscroll-behavior:contain}
+.hs-modal-backdrop.open .hs-modal-card{transform:translateY(0) scale(1)}
+.hs-modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:rgba(238,229,209,.6);border:1px solid var(--sand-2);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--sage-ink);font-size:18px;line-height:1;transition:background .2s ease}
+.hs-modal-close:hover{background:var(--kumkum);color:var(--ivory)}
+
+/* Form Elements */
+.rsvp-header{text-align:center;margin-bottom:20px}
+.rsvp-header h2{font:600 24px/1.2 var(--cin);color:var(--kumkum);margin:0 0 4px}
+.rsvp-header p{font:400 13px var(--cin);letter-spacing:.05em;color:var(--gold-ink);margin:0}
+.rsvp-field{margin-bottom:18px}
+.rsvp-label{display:block;font:600 12px/1.3 var(--cin);letter-spacing:.08em;text-transform:uppercase;color:var(--sage-ink);margin-bottom:6px}
+.rsvp-input{width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--sand-2);background:#fff;font:400 15px/1.4 var(--sans);color:var(--ink);box-sizing:border-box;transition:border-color .2s,box-shadow .2s}
+.rsvp-input:focus{outline:none;border-color:var(--kumkum);box-shadow:0 0 0 3px rgba(122,29,46,.12)}
+
+/* Attendance Toggle */
+.attend-toggle-group{display:flex;gap:10px}
+.attend-btn{flex:1;padding:12px 10px;border-radius:12px;border:1.5px solid var(--sand-2);background:var(--sand-1);color:var(--ink);font:600 13px/1.2 var(--cin);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s ease}
+.attend-btn:hover{border-color:var(--gold)}
+.attend-btn.active{background:var(--kumkum);color:var(--ivory);border-color:var(--kumkum);box-shadow:0 4px 14px rgba(122,29,46,.25)}
+.attend-btn.active.regret{background:#4a5568;border-color:#4a5568}
+
+/* Stepper */
+.stepper-row{display:flex;align-items:center;gap:14px}
+.stepper-btn{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--gold);background:var(--sand-1);color:var(--kumkum);font:700 20px/1 var(--cin);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.stepper-btn:hover{background:var(--kumkum);color:var(--ivory);border-color:var(--kumkum)}
+.stepper-val{font:700 20px var(--cin);color:var(--ink);min-width:32px;text-align:center}
+
+/* Food Pills */
+.food-group{display:flex;gap:10px}
+.food-pill{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--sand-2);background:var(--sand-1);color:var(--ink);font:600 12px/1.2 var(--cin);letter-spacing:.04em;cursor:pointer;text-align:center;transition:all .2s ease}
+.food-pill:hover{border-color:var(--gold)}
+.food-pill.active{background:var(--gold-ink);color:var(--ivory);border-color:var(--gold-ink);box-shadow:0 4px 12px rgba(138,82,10,.25)}
+
+/* Event Checkboxes */
+.event-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;border:1px solid var(--sand-2);background:rgba(255,255,255,.6);margin-bottom:8px;cursor:pointer;transition:border-color .2s}
+.event-item:hover{border-color:var(--gold)}
+.event-item input{width:17px;height:17px;accent-color:var(--kumkum);cursor:pointer}
+.event-item-txt{display:flex;flex-direction:column}
+.event-item-txt strong{font:600 13px/1.3 var(--cin);color:var(--ink)}
+.event-item-txt span{font:400 11px/1.3 var(--sans);color:var(--sage-ink)}
+
+/* Primary Submit Button */
+.rsvp-submit{width:100%;padding:13px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--kumkum),#8a1f33);color:var(--ivory);font:700 14px/1 var(--cin);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 6px 18px rgba(122,29,46,.32);transition:all .25s ease;margin-top:6px}
+.rsvp-submit:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(122,29,46,.42)}
+.rsvp-submit:disabled{opacity:.6;cursor:not-allowed}
+
+/* Confirmation Success Card */
+.rsvp-success{text-align:center;padding:16px 8px}
+.rsvp-success .check-icon{width:56px;height:56px;border-radius:50%;background:rgba(46,125,50,.12);color:#2e7d32;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.rsvp-success .check-icon svg{width:32px;height:32px;stroke-width:2.5;stroke:currentColor;fill:none}
+.rsvp-success h3{font:600 22px var(--cin);color:var(--kumkum);margin:0 0 6px}
+.rsvp-success p{font:400 14px/1.5 var(--sans);color:var(--ink);margin:0 0 18px}
+.rsvp-cal-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:var(--sand-1);border:1.5px solid var(--gold);color:var(--kumkum);font:600 12px var(--cin);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all .2s ease}
+.rsvp-cal-btn:hover{background:var(--kumkum);color:var(--ivory);border-color:var(--kumkum)}
+
+/* Admin Dashboard Modal */
+.admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+.admin-stat{background:var(--sand-1);border:1px solid var(--sand-2);border-radius:12px;padding:12px 14px;text-align:center}
+.admin-stat .num{font:700 24px/1 var(--cin);color:var(--kumkum);margin-bottom:4px}
+.admin-stat .lbl{font:600 11px/1.2 var(--cin);letter-spacing:.06em;text-transform:uppercase;color:var(--sage-ink)}
+.admin-stat.full{grid-column:1/-1;background:rgba(232,163,23,.1);border-color:var(--gold)}
+.admin-stat.full .num{color:var(--gold-ink);font-size:28px}
+
+.admin-list-wrap{max-height:220px;overflow-y:auto;border:1px solid var(--sand-2);border-radius:12px;background:#fff;margin-bottom:14px}
+.admin-table{width:100%;border-collapse:collapse;font:400 12px/1.4 var(--sans)}
+.admin-table th{position:sticky;top:0;background:var(--sand-1);font:600 11px var(--cin);text-align:left;padding:8px 10px;border-bottom:1px solid var(--sand-2);color:var(--sage-ink);text-transform:uppercase;letter-spacing:.04em}
+.admin-table td{padding:8px 10px;border-bottom:1px solid rgba(0,0,0,.05);color:var(--ink)}
+.admin-table tr:last-child td{border-bottom:none}
+.badge-attending{color:#2e7d32;font-weight:600}
+.badge-regrets{color:#c62828;font-weight:600}
+.admin-actions{display:flex;gap:10px;justify-content:flex-end}
+
+@media (max-width:480px){
+  #btn-fab-rsvp{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));padding:9px 14px;font-size:11px}
+  #btn-admin-pill{left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));padding:6px 10px;font-size:10px}
+  .hs-modal-card{padding:20px 16px}
+}
+
 @media (prefers-reduced-motion:reduce){.name,.gradgold{animation:none}.flip{animation:none}.seal .cap i,#snd .bars i,.scrollhint,.scratch-cue{animation:none}#env.leaving,#env.leaving .flap,#scratch{transition:none}}
 </style>
 </head>
@@ -504,7 +597,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
     <p class="addr" id="venue-addr"></p>
     <div class="btns">
       <a class="btn fill" id="maps" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>Google Maps</a>
-      <a class="btn" id="cal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>Add to Calendar</a>
+      <button type="button" class="btn btn-rsvp-trigger" id="venue-rsvp-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Are You Coming?</button>
     </div>
   </div>
 </section>
@@ -560,6 +653,175 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   <button type="button" data-target=".s-venue" title="Venue"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Venue</span></button>
   <button type="button" data-target=".s-bless" title="Blessings"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Blessings</span></button>
 </nav>
+
+<!-- Floating Action Button for RSVP -->
+<button type="button" id="btn-fab-rsvp" class="hide" aria-label="Confirm your attendance">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+  <span>Are You Coming?</span>
+</button>
+
+<!-- Family View Admin Pill (Bottom-Left) -->
+<button type="button" id="btn-admin-pill" class="hide" aria-label="Family View Admin Dashboard">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  <span>Family View</span>
+</button>
+
+<!-- Smart Confirmation RSVP Modal -->
+<div id="rsvp-modal" class="hs-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="rsvp-title">
+  <div class="hs-modal-card">
+    <button type="button" class="hs-modal-close" id="rsvp-modal-close" aria-label="Close dialog">&times;</button>
+    <div id="rsvp-form-container">
+      <div class="rsvp-header">
+        <h2 id="rsvp-title">Are You Coming? 🌸</h2>
+        <p class="deva" lang="mr">॥ सस्नेह उपस्थितीची नोंद ॥</p>
+      </div>
+      <form id="rsvp-form" onsubmit="return false;">
+        <div class="rsvp-field">
+          <label class="rsvp-label" for="rsvp-name">Guest / Family Name</label>
+          <input type="text" id="rsvp-name" class="rsvp-input" placeholder="e.g. Patil Family or Rahul Patil" required autocomplete="name">
+        </div>
+
+        <div class="rsvp-field">
+          <label class="rsvp-label">Will you be joining us?</label>
+          <div class="attend-toggle-group">
+            <button type="button" class="attend-btn active" id="attend-yes" data-val="yes">
+              <span>🌸 Yes, celebrating!</span>
+            </button>
+            <button type="button" class="attend-btn" id="attend-no" data-val="no">
+              <span>🙏 Regrets</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="rsvp-attending-fields">
+          <div class="rsvp-field">
+            <label class="rsvp-label">Total Guests Attending</label>
+            <div class="stepper-row">
+              <button type="button" class="stepper-btn" id="btn-count-dec" aria-label="Decrease guest count">&minus;</button>
+              <span class="stepper-val" id="rsvp-count-disp">1</span>
+              <button type="button" class="stepper-btn" id="btn-count-inc" aria-label="Increase guest count">+</button>
+            </div>
+          </div>
+
+          <div class="rsvp-field">
+            <label class="rsvp-label">Food Preference</label>
+            <div class="food-group">
+              <button type="button" class="food-pill active" id="food-veg" data-val="Vegetarian">🌱 Vegetarian</button>
+              <button type="button" class="food-pill" id="food-nonveg" data-val="Non-Vegetarian">🍗 Non-Vegetarian</button>
+            </div>
+          </div>
+
+          <div class="rsvp-field">
+            <label class="rsvp-label">Events You Are Joining</label>
+            <label class="event-item">
+              <input type="checkbox" id="ev-sangeet" value="Engagement & Sangeet - Dec 11">
+              <div class="event-item-txt">
+                <strong>Engagement &amp; Sangeet</strong>
+                <span>Wednesday, 11 Dec 2026</span>
+              </div>
+            </label>
+            <label class="event-item">
+              <input type="checkbox" id="ev-wedding" value="Wedding Day - Dec 12" checked>
+              <div class="event-item-txt">
+                <strong>Wedding Ceremony &amp; Reception</strong>
+                <span>Thursday, 12 Dec 2026 (Lagna: 5:43 PM)</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="rsvp-submit" id="btn-rsvp-submit">Yes, Count Me In! 🎉</button>
+      </form>
+    </div>
+
+    <!-- RSVP Success Card -->
+    <div id="rsvp-success-card" class="rsvp-success" style="display:none;">
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h3 id="rsvp-success-title">Thank You! 🌸</h3>
+      <p id="rsvp-success-msg">Your confirmation has been lovingly received. We look forward to celebrating together!</p>
+      <div id="rsvp-cal-wrap" style="margin-top:14px;">
+        <a class="rsvp-cal-btn" id="rsvp-cal-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>
+          Add to Google Calendar
+        </a>
+      </div>
+      <div style="margin-top:18px;">
+        <button type="button" class="btn" id="rsvp-done-btn" style="padding:8px 20px;font-size:12px;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Built-in Family View Admin Modal -->
+<div id="admin-modal" class="hs-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+  <div class="hs-modal-card">
+    <button type="button" class="hs-modal-close" id="admin-modal-close" aria-label="Close admin dialog">&times;</button>
+    <div class="rsvp-header">
+      <h2 id="admin-title">Family View ⚜️</h2>
+      <p>Alisha &amp; Family RSVP Dashboard</p>
+    </div>
+
+    <!-- PIN Screen -->
+    <div id="admin-pin-screen">
+      <div class="rsvp-field">
+        <label class="rsvp-label" for="admin-pin-input">Enter 4-Digit Security PIN</label>
+        <input type="password" id="admin-pin-input" class="rsvp-input" maxlength="4" placeholder="••••" pattern="[0-9]*" inputmode="numeric" style="letter-spacing:6px;font-size:20px;text-align:center;">
+      </div>
+      <div id="admin-pin-err" style="color:#c62828;font-size:12px;margin-bottom:10px;text-align:center;display:none;">Incorrect PIN. Please try again.</div>
+      <button type="button" class="rsvp-submit" id="btn-admin-verify">Unlock Dashboard</button>
+    </div>
+
+    <!-- Stats & Guest List Screen -->
+    <div id="admin-dash-screen" style="display:none;">
+      <div class="admin-grid">
+        <div class="admin-stat full">
+          <div class="num" id="stat-total-guests">0</div>
+          <div class="lbl">Total Confirmed Guests</div>
+        </div>
+        <div class="admin-stat">
+          <div class="num" id="stat-responses">0</div>
+          <div class="lbl">Responses</div>
+        </div>
+        <div class="admin-stat">
+          <div class="num" id="stat-regrets" style="color:#c62828;">0</div>
+          <div class="lbl">Regrets</div>
+        </div>
+        <div class="admin-stat">
+          <div class="num" id="stat-veg" style="color:#2e7d32;">0</div>
+          <div class="lbl">Vegetarian</div>
+        </div>
+        <div class="admin-stat">
+          <div class="num" id="stat-nonveg" style="color:#e65100;">0</div>
+          <div class="lbl">Non-Veg</div>
+        </div>
+      </div>
+
+      <label class="rsvp-label">Guest Responses</label>
+      <div class="admin-list-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Guest Name</th>
+              <th>Status</th>
+              <th>Count</th>
+              <th>Food</th>
+            </tr>
+          </thead>
+          <tbody id="admin-guest-tbody">
+            <tr><td colspan="4" style="text-align:center;color:var(--sage-ink);padding:14px;">Loading responses...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admin-actions">
+        <button type="button" class="btn" id="btn-admin-refresh" style="font-size:11px;padding:8px 14px;">Refresh Data</button>
+        <button type="button" class="btn fill" id="btn-admin-export" style="font-size:11px;padding:8px 14px;">Export Excel</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Firebase Realtime Shared Database & Anonymous Auth -->
 <script src="firebase-config.js"></script>
@@ -668,6 +930,8 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
         window.scrollTo(0,0);
         var s=P('snd');if(s&&audioOK)s.hidden=false;
         var d=P('nav-dock');if(d)d.classList.remove('hide');
+        var fab=P('btn-fab-rsvp');if(fab)fab.classList.remove('hide');
+        var adm=P('btn-admin-pill');if(adm)adm.classList.remove('hide');
         setTimeout(function(){if(!scratched&&!revealed)paintCard();}, 300);
         // Automatically scroll to peek at Page 2 once Page 1 entrance is complete!
         setTimeout(triggerAutoScrollPeek, 1300);
@@ -1142,9 +1406,12 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   P('venue-name').textContent=venueSet?CFG.venueName:'Wedding Venue';
   P('venue-addr').textContent=venueSet?CFG.venueAddress:'Tap Google Maps for the location and directions';
   P('maps').href=CFG.mapsUrl;
+  /* Calendar button replaced by 'Are You Coming?' attendance action */
+  /*
   P('cal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Wedding of Harshada & Sohan')+
     '&dates='+CFG.calStart+'/'+CFG.calEnd+'&ctz=Asia/Kolkata&details='+encodeURIComponent('Lagna Muhurat at 5:43 PM. Haldi at 11:30 AM (Lunch at 1:30 PM), Varaat at 4:15 PM (Groom welcome at 5:00 PM), guest dinner from 7:00 PM, and grand reception entry from 7:45 PM.')+
     '&location='+encodeURIComponent(venueSet?CFG.venueName+' '+CFG.venueAddress:CFG.mapsUrl);
+  */
 
   /* ===== Music: an original romantic raga-style tune (Bhoop) on bansuri, tanpura and soft tabla ===== */
   var audioOK=!!(window.AudioContext||window.webkitAudioContext);
@@ -1592,6 +1859,394 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
     }catch(err){
       console.error("Firebase init error:",err);
       renderWall(lsGet('hs-blessings'));
+    }
+  })();
+
+  /* ================= SMART RSVP & FAMILY ADMIN MODULE ================= */
+  (function initRsvpModule(){
+    var RSVP_COLLECTION='rsvps';
+    var rsvpModal=P('rsvp-modal');
+    var adminModal=P('admin-modal');
+    var btnFabRsvp=P('btn-fab-rsvp');
+    var btnVenueRsvp=P('venue-rsvp-btn');
+    var btnAdminPill=P('btn-admin-pill');
+    var rsvpClose=P('rsvp-modal-close');
+    var adminClose=P('admin-modal-close');
+    var rsvpForm=P('rsvp-form');
+    var rsvpFormContainer=P('rsvp-form-container');
+    var rsvpSuccessCard=P('rsvp-success-card');
+    var rsvpDoneBtn=P('rsvp-done-btn');
+
+    var rsvpNameInput=P('rsvp-name');
+    var attendYesBtn=P('attend-yes');
+    var attendNoBtn=P('attend-no');
+    var rsvpAttendingFields=P('rsvp-attending-fields');
+    var btnCountDec=P('btn-count-dec');
+    var btnCountInc=P('btn-count-inc');
+    var countDisp=P('rsvp-count-disp');
+    var foodVeg=P('food-veg');
+    var foodNonveg=P('food-nonveg');
+    var evSangeet=P('ev-sangeet');
+    var evWedding=P('ev-wedding');
+    var btnRsvpSubmit=P('btn-rsvp-submit');
+    var rsvpCalLink=P('rsvp-cal-link');
+
+    // Admin Elements
+    var pinScreen=P('admin-pin-screen');
+    var dashScreen=P('admin-dash-screen');
+    var pinInput=P('admin-pin-input');
+    var pinErr=P('admin-pin-err');
+    var btnAdminVerify=P('btn-admin-verify');
+    var btnAdminRefresh=P('btn-admin-refresh');
+    var btnAdminExport=P('btn-admin-export');
+    var guestTbody=P('admin-guest-tbody');
+    var statTotalGuests=P('stat-total-guests');
+    var statResponses=P('stat-responses');
+    var statRegrets=P('stat-regrets');
+    var statVeg=P('stat-veg');
+    var statNonveg=P('stat-nonveg');
+
+    // Form State
+    var state={
+      attending:true,
+      guestCount:1,
+      foodPreference:'Vegetarian'
+    };
+
+    // Auto-prefill Guest Name from URL parameter (e.g. ?guest=SharmaFamily or ?name=...)
+    try{
+      var urlParams=new URLSearchParams(window.location.search);
+      var guestParam=urlParams.get('guest')||urlParams.get('name')||urlParams.get('to')||'';
+      if(guestParam && rsvpNameInput){
+        // Replace dashes or underscores with space if formatted as URL slug
+        var cleanName=guestParam.replace(/[-_]+/g,' ').trim();
+        rsvpNameInput.value=cleanName;
+      }
+    }catch(e){}
+
+    // Calendar Link Setup
+    if(rsvpCalLink){
+      var vSet=CFG.venueName&&CFG.venueName.charAt(0)!=='[';
+      rsvpCalLink.href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Wedding of Harshada & Sohan')+
+        '&dates='+CFG.calStart+'/'+CFG.calEnd+'&ctz=Asia/Kolkata&details='+encodeURIComponent('We look forward to celebrating with you! Lagna Muhurat at 5:43 PM at '+CFG.venueName)+
+        '&location='+encodeURIComponent(vSet?CFG.venueName+' '+CFG.venueAddress:CFG.mapsUrl);
+    }
+
+    // Modal Visibility Helpers
+    function openRsvpModal(){
+      if(rsvpModal){
+        rsvpFormContainer.style.display='block';
+        rsvpSuccessCard.style.display='none';
+        btnRsvpSubmit.disabled=false;
+        btnRsvpSubmit.textContent=state.attending?'Yes, Count Me In! 🎉':'Submit Response 🙏';
+        rsvpModal.classList.add('open');
+        setTimeout(function(){if(rsvpNameInput)rsvpNameInput.focus();},100);
+      }
+    }
+    function closeRsvpModal(){
+      if(rsvpModal)rsvpModal.classList.remove('open');
+    }
+
+    if(btnFabRsvp)btnFabRsvp.addEventListener('click',openRsvpModal);
+    if(btnVenueRsvp)btnVenueRsvp.addEventListener('click',openRsvpModal);
+    if(rsvpClose)rsvpClose.addEventListener('click',closeRsvpModal);
+    if(rsvpDoneBtn)rsvpDoneBtn.addEventListener('click',closeRsvpModal);
+    if(rsvpModal)rsvpModal.addEventListener('click',function(e){
+      if(e.target===rsvpModal)closeRsvpModal();
+    });
+
+    // Attendance Toggle
+    if(attendYesBtn&&attendNoBtn){
+      attendYesBtn.addEventListener('click',function(){
+        state.attending=true;
+        attendYesBtn.classList.add('active');
+        attendNoBtn.classList.remove('active','regret');
+        if(rsvpAttendingFields)rsvpAttendingFields.style.display='block';
+        btnRsvpSubmit.textContent='Yes, Count Me In! 🎉';
+      });
+      attendNoBtn.addEventListener('click',function(){
+        state.attending=false;
+        attendNoBtn.classList.add('active','regret');
+        attendYesBtn.classList.remove('active');
+        if(rsvpAttendingFields)rsvpAttendingFields.style.display='none';
+        btnRsvpSubmit.textContent='Submit Response 🙏';
+      });
+    }
+
+    // Stepper Count
+    if(btnCountDec&&btnCountInc&&countDisp){
+      btnCountDec.addEventListener('click',function(){
+        if(state.guestCount>1){
+          state.guestCount--;
+          countDisp.textContent=state.guestCount;
+        }
+      });
+      btnCountInc.addEventListener('click',function(){
+        if(state.guestCount<20){
+          state.guestCount++;
+          countDisp.textContent=state.guestCount;
+        }
+      });
+    }
+
+    // Food Preference Pills
+    if(foodVeg&&foodNonveg){
+      foodVeg.addEventListener('click',function(){
+        state.foodPreference='Vegetarian';
+        foodVeg.classList.add('active');
+        foodNonveg.classList.remove('active');
+      });
+      foodNonveg.addEventListener('click',function(){
+        state.foodPreference='Non-Vegetarian';
+        foodNonveg.classList.add('active');
+        foodVeg.classList.remove('active');
+      });
+    }
+
+    // RSVP Form Submission with Smart Upsert
+    if(rsvpForm){
+      rsvpForm.addEventListener('submit',function(e){
+        e.preventDefault();
+        var guestName=(rsvpNameInput.value||'').trim();
+        if(!guestName){
+          rsvpNameInput.focus();
+          return;
+        }
+
+        var events=[];
+        if(state.attending){
+          if(evSangeet&&evSangeet.checked)events.push(evSangeet.value);
+          if(evWedding&&evWedding.checked)events.push(evWedding.value);
+        }
+
+        var rsvpData={
+          guestName:guestName,
+          attending:state.attending,
+          guestCount:state.attending?state.guestCount:0,
+          foodPreference:state.attending?state.foodPreference:'N/A',
+          events:events,
+          updatedAt:new Date().toISOString(),
+          ts:Date.now()
+        };
+
+        btnRsvpSubmit.disabled=true;
+        btnRsvpSubmit.textContent='Confirming...';
+
+        function showSuccessUI(){
+          rsvpFormContainer.style.display='none';
+          rsvpSuccessCard.style.display='block';
+          var titleEl=P('rsvp-success-title');
+          var msgEl=P('rsvp-success-msg');
+          var calWrap=P('rsvp-cal-wrap');
+          if(state.attending){
+            if(titleEl)titleEl.textContent='We can\'t wait to see you! 🌸';
+            if(msgEl)msgEl.textContent='Thank you, '+guestName+'! Your confirmation for '+state.guestCount+' guest(s) is recorded.';
+            if(calWrap)calWrap.style.display='block';
+            petals();
+          }else{
+            if(titleEl)titleEl.textContent='Thank you for letting us know 🙏';
+            if(msgEl)msgEl.textContent='We will miss having you with us, '+guestName+'. Your warm blessings mean the world to Harshada & Sohan!';
+            if(calWrap)calWrap.style.display='none';
+          }
+        }
+
+        function saveLocalFallback(){
+          var list=lsGet('hs-rsvps');
+          // Smart Upsert in localStorage
+          var existingIdx=-1;
+          for(var i=0;i<list.length;i++){
+            if(list[i].guestName&&list[i].guestName.toLowerCase()===guestName.toLowerCase()){
+              existingIdx=i;
+              break;
+            }
+          }
+          if(existingIdx>-1){
+            list[existingIdx]=rsvpData;
+          }else{
+            list.unshift(rsvpData);
+          }
+          lsSet('hs-rsvps',list);
+          showSuccessUI();
+        }
+
+        if(db){
+          // Smart Upsert: query existing doc by guestName
+          db.collection(RSVP_COLLECTION)
+            .where('guestName','==',guestName)
+            .limit(1)
+            .get()
+            .then(function(snapshot){
+              if(!snapshot.empty){
+                // Update existing record
+                var docRef=snapshot.docs[0].ref;
+                return docRef.update(rsvpData);
+              }else{
+                // Create new record
+                return db.collection(RSVP_COLLECTION).add(rsvpData);
+              }
+            })
+            .then(function(){
+              showSuccessUI();
+            })
+            .catch(function(err){
+              console.warn('Firestore RSVP upsert fallback to local:',err);
+              saveLocalFallback();
+            });
+        }else{
+          saveLocalFallback();
+        }
+      });
+    }
+
+    // ================= ADMIN DASHBOARD =================
+    var ADMIN_PIN="2026";
+    var cachedRsvpList=[];
+
+    function openAdminModal(){
+      if(adminModal){
+        adminModal.classList.add('open');
+        pinScreen.style.display='block';
+        dashScreen.style.display='none';
+        pinErr.style.display='none';
+        pinInput.value='';
+        setTimeout(function(){pinInput.focus();},100);
+      }
+    }
+    function closeAdminModal(){
+      if(adminModal)adminModal.classList.remove('open');
+    }
+
+    if(btnAdminPill)btnAdminPill.addEventListener('click',openAdminModal);
+    if(adminClose)adminClose.addEventListener('click',closeAdminModal);
+    if(adminModal)adminModal.addEventListener('click',function(e){
+      if(e.target===adminModal)closeAdminModal();
+    });
+
+    // PIN Verification
+    function verifyPin(){
+      if(pinInput.value.trim()===ADMIN_PIN){
+        pinScreen.style.display='none';
+        dashScreen.style.display='block';
+        fetchAdminStats();
+      }else{
+        pinErr.style.display='block';
+        pinInput.value='';
+        pinInput.focus();
+      }
+    }
+
+    if(btnAdminVerify)btnAdminVerify.addEventListener('click',verifyPin);
+    if(pinInput)pinInput.addEventListener('keydown',function(e){
+      if(e.key==='Enter')verifyPin();
+    });
+
+    // Calculate and Render Dashboard
+    function renderAdminDashboard(items){
+      cachedRsvpList=items||[];
+      var totalConfirmedGuests=0;
+      var totalResponses=cachedRsvpList.length;
+      var regretsCount=0;
+      var vegCount=0;
+      var nonVegCount=0;
+
+      var rowsHtml='';
+
+      if(!cachedRsvpList.length){
+        rowsHtml='<tr><td colspan="4" style="text-align:center;color:var(--sage-ink);padding:14px;">No RSVP responses received yet.</td></tr>';
+      }else{
+        cachedRsvpList.forEach(function(r){
+          var isAttending=r.attending!==false;
+          var count=isAttending?(parseInt(r.guestCount,10)||1):0;
+          if(isAttending){
+            totalConfirmedGuests+=count;
+            if(r.foodPreference==='Non-Vegetarian'){
+              nonVegCount+=count;
+            }else{
+              vegCount+=count;
+            }
+          }else{
+            regretsCount++;
+          }
+
+          var statusBadge=isAttending?'<span class="badge-attending">Attending</span>':'<span class="badge-regrets">Regrets</span>';
+          var foodBadge=isAttending?(r.foodPreference==='Non-Vegetarian'?'🍗 Non-Veg':'🌱 Veg'):'—';
+
+          rowsHtml+='<tr>'+
+            '<td style="font-weight:600;">'+(r.guestName||'Anonymous')+'</td>'+
+            '<td>'+statusBadge+'</td>'+
+            '<td>'+(isAttending?count:'0')+'</td>'+
+            '<td>'+foodBadge+'</td>'+
+          '</tr>';
+        });
+      }
+
+      if(statTotalGuests)statTotalGuests.textContent=totalConfirmedGuests;
+      if(statResponses)statResponses.textContent=totalResponses;
+      if(statRegrets)statRegrets.textContent=regretsCount;
+      if(statVeg)statVeg.textContent=vegCount;
+      if(statNonveg)statNonveg.textContent=nonVegCount;
+      if(guestTbody)guestTbody.innerHTML=rowsHtml;
+    }
+
+    function fetchAdminStats(){
+      if(guestTbody){
+        guestTbody.innerHTML='<tr><td colspan="4" style="text-align:center;color:var(--sage-ink);padding:14px;">Refreshing data...</td></tr>';
+      }
+      if(db){
+        db.collection(RSVP_COLLECTION).orderBy('ts','desc').get().then(function(snap){
+          var list=snap.docs.map(function(d){return d.data();});
+          renderAdminDashboard(list);
+        }).catch(function(err){
+          console.warn('Admin fetch error fallback to local:',err);
+          renderAdminDashboard(lsGet('hs-rsvps'));
+        });
+      }else{
+        renderAdminDashboard(lsGet('hs-rsvps'));
+      }
+    }
+
+    if(btnAdminRefresh)btnAdminRefresh.addEventListener('click',fetchAdminStats);
+
+    // Export RSVPs to Excel (.xlsx) using SheetJS
+    if(btnAdminExport){
+      btnAdminExport.addEventListener('click',function(){
+        if(!cachedRsvpList||!cachedRsvpList.length){
+          alert('No RSVP data available to export.');
+          return;
+        }
+        var exportRows=cachedRsvpList.map(function(r,idx){
+          return {
+            'No.':idx+1,
+            'Guest / Family Name':r.guestName||'',
+            'Attending':r.attending?'Yes':'Regrets',
+            'Guest Count':r.attending?(r.guestCount||1):0,
+            'Food Preference':r.foodPreference||'N/A',
+            'Events':Array.isArray(r.events)?r.events.join(', '):'',
+            'Timestamp':r.updatedAt||(r.ts?new Date(r.ts).toLocaleString('en-IN'):'')
+          };
+        });
+
+        if(typeof XLSX!=='undefined'){
+          var ws=XLSX.utils.json_to_sheet(exportRows);
+          var wb=XLSX.utils.book_new();
+          XLSX.utils.book_append_sheet(wb,ws,'RSVP_Responses');
+          XLSX.writeFile(wb,'Harshada_Sohan_Wedding_RSVPs.xlsx');
+        }else{
+          // Simple CSV fallback
+          var headers=Object.keys(exportRows[0]);
+          var csvContent='data:text/csv;charset=utf-8,'+
+            headers.join(',')+'\n'+
+            exportRows.map(function(row){
+              return headers.map(function(h){return '"'+String(row[h]||'').replace(/"/g,'""')+'"';}).join(',');
+            }).join('\n');
+          var link=document.createElement('a');
+          link.setAttribute('href',encodeURI(csvContent));
+          link.setAttribute('download','Harshada_Sohan_Wedding_RSVPs.csv');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      });
     }
   })();
 })();

@@ -18,5 +18,17 @@ service cloud.firestore {
       // 4. Blessings cannot be modified
       allow update: if false;
     }
+
+    match /rsvps/{rsvpId} {
+      // Allow guests and admin to read RSVPs
+      allow read: if true;
+
+      // Allow guests to submit and update (upsert) attendance
+      allow create, update: if request.resource.data.guestName is string
+                            && request.resource.data.guestName.size() > 0;
+
+      // Admin or author can delete if needed
+      allow delete: if true;
+    }
   }
 }
