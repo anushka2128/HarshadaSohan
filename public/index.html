@@ -83,7 +83,8 @@ a{color:inherit}
 .seal::before{content:"";position:absolute;inset:-32%;border-radius:50%;background:radial-gradient(circle,rgba(255,224,130,.75),rgba(255,224,130,0) 68%);z-index:-1;animation:glow 2.2s ease-in-out infinite}
 @keyframes glow{0%,100%{transform:scale(.88);opacity:.55}50%{transform:scale(1.18);opacity:1}}
 
-.seal svg{width:100%;height:100%;display:block;overflow:visible}
+.seal svg{width:100%;height:100%;display:block;overflow:visible;pointer-events:none}
+.seal image{filter:drop-shadow(0 1px 2px rgba(40,10,10,.35))}
 .seal .cap{position:absolute;left:50%;top:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;
   font:600 12px/1 var(--cin);letter-spacing:.22em;text-transform:uppercase;color:#FFF6DE;text-shadow:0 1px 4px rgba(30,6,10,.85)}
 .seal .cap i{display:inline-block;font-style:normal;animation:nudge 1.4s ease-in-out infinite;font-weight:700;color:var(--gold-lt)}
@@ -357,13 +358,13 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 #nav-dock button svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 #nav-dock button:hover,#nav-dock button.active{background:var(--kumkum);color:var(--ivory)}
 
-/* Floating RSVP FAB (Primary Action) */
-#btn-fab-rsvp{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:66;display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:linear-gradient(135deg,var(--kumkum),#6b1522);color:var(--ivory);font:600 13px/1 var(--cin);letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(232,163,23,.5);box-shadow:0 6px 20px rgba(74,22,32,.35),0 0 12px rgba(232,163,23,.25);cursor:pointer;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease,opacity .3s ease}
+/* Floating RSVP FAB (Primary Action) - Shifted to left side */
+#btn-fab-rsvp{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:66;display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:linear-gradient(135deg,var(--kumkum),#6b1522);color:var(--ivory);font:600 13px/1 var(--cin);letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(232,163,23,.5);box-shadow:0 6px 20px rgba(74,22,32,.35),0 0 12px rgba(232,163,23,.25);cursor:pointer;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease,opacity .3s ease}
 #btn-fab-rsvp:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 24px rgba(74,22,32,.45),0 0 16px rgba(232,163,23,.4)}
 #btn-fab-rsvp.hide{opacity:0;pointer-events:none;transform:translateY(20px)}
 #btn-fab-rsvp svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* Admin Family View Pill - Separated into top-left safe corner to guarantee zero overlap */
+/* Admin Family View Pill - Top-left safe corner */
 #btn-admin-pill{position:fixed;left:max(14px,env(safe-area-inset-left,0px));top:calc(14px + env(safe-area-inset-top,0px));z-index:64;display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;background:rgba(251,246,233,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--sand-2);color:var(--sage-ink);font:600 11px/1 var(--cin);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px rgba(74,22,32,.12);transition:all .25s ease}
 #btn-admin-pill:hover{background:var(--ivory);color:var(--kumkum);border-color:var(--gold)}
 #btn-admin-pill.hide{opacity:0;pointer-events:none;transform:translateY(-20px)}
@@ -372,7 +373,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 /* Floating Controls Responsive Layering on Small Screens (< 640px) */
 @media (max-width:640px){
   #nav-dock{bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:4px 6px;max-width:calc(100% - 16px)}
-  #btn-fab-rsvp{bottom:calc(62px + env(safe-area-inset-bottom,0px));right:max(12px,env(safe-area-inset-right,0px));padding:9px 15px;font-size:11.5px;gap:6px}
+  #btn-fab-rsvp{bottom:calc(62px + env(safe-area-inset-bottom,0px));left:max(12px,env(safe-area-inset-left,0px));padding:9px 15px;font-size:11.5px;gap:6px}
   #btn-admin-pill{top:calc(12px + env(safe-area-inset-top,0px));left:max(12px,env(safe-area-inset-left,0px));padding:6px 11px;font-size:10px}
 }
 
@@ -462,7 +463,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   #nav-dock button span{display:none}
   #nav-dock button{padding:7px 9px}
   #nav-dock button svg{width:15px;height:15px}
-  #btn-fab-rsvp{right:max(12px,env(safe-area-inset-right,0px));bottom:calc(64px + env(safe-area-inset-bottom,0px));padding:9px 13px;font-size:11px;gap:5px}
+  #btn-fab-rsvp{left:max(12px,env(safe-area-inset-left,0px));bottom:calc(64px + env(safe-area-inset-bottom,0px));padding:9px 13px;font-size:11px;gap:5px}
   #btn-fab-rsvp svg{width:14px;height:14px}
   #btn-admin-pill{top:calc(12px + env(safe-area-inset-top,0px));left:max(10px,env(safe-area-inset-left,0px));padding:6px 9px;font-size:9.5px;gap:4px}
   #btn-admin-pill svg{width:12px;height:12px}
@@ -890,7 +891,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
     '<svg viewBox="-66 -66 132 132" aria-hidden="true"><defs><radialGradient id="sg" cx="40%" cy="30%" r="80%"><stop offset="0" stop-color="#FFFCF1"/><stop offset="1" stop-color="#EFE2BD"/></radialGradient></defs>'+
     '<path d="'+scallop(18,62)+'" fill="url(#sg)" stroke="#B58E36" stroke-width="2"/>'+
     '<circle r="47" fill="none" stroke="#DDBF70" stroke-width="1"/>'+
-    '<g transform="translate(0 -2)" fill="none" stroke="#B58E36" stroke-width="1.3" stroke-linecap="round"><path d="M0 -36C2 -33 3 -31 4 -29C14 -26 18 -17 14 -11C10 -6 -10 -6 -14 -11C-18 -17 -14 -26 -4 -29C-3 -31 -2 -33 0 -36Z" fill="#F6E7B6"/><path d="M0 -29V-8M-5 -28C-9 -20 -9 -12 -8 -8M5 -28C9 -20 9 -12 8 -8"/></g></svg>');
+    '<image href="img/ganesha-seal-180.png" x="-42" y="-42" width="84" height="84" preserveAspectRatio="xMidYMid meet"/></svg>');
 
   var W=0,H=0,y0=0,yEnd=0,cur=0,opened=false,anim=null;
   function setY(y){
@@ -938,8 +939,8 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
         var fab=P('btn-fab-rsvp');if(fab)fab.classList.remove('hide');
         var adm=P('btn-admin-pill');if(adm)adm.classList.remove('hide');
         setTimeout(function(){if(!scratched&&!revealed)paintCard();}, 300);
-        // Automatically scroll smoothly to Page 2 after viewing Page 1 so aged guests can read effortlessly
-        autoScrollTimer = setTimeout(triggerAutoScrollToNext, 2200);
+        // Begin automatic page transitions for each section
+        initAutoPageTransitions();
       },reduce?0:820);
     });
   }
@@ -1219,40 +1220,92 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   hint.addEventListener('click',function(){var n=document.querySelector('.s-couple');if(n)n.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});});
   window.addEventListener('scroll',function(){hint.classList.toggle('gone',window.scrollY>40);},{passive:true});
 
-  /* ===== Automatic Smooth Scroll to Page 2 after Envelope Opens ===== */
-  var autoScrollDone=false, autoScrollTimer=null;
+  /* ===== Automatic Smooth Scroll: Progresses from page to page after transitions complete ===== */
+  var autoAdvanceTimer = null, isAutoScrolling = false, userInteractedRecently = false, userTouchTimeout = null;
+  var pages = ['.s-invoke', '.s-couple', '.s-muhurat', '.s-sohola', '.s-venue', '.s-bless'];
+  var pageDelays = {
+    '.s-invoke': 2600,   // Initial Ganesh greeting + shloka
+    '.s-couple': 3600,   // Time to read bride & groom details
+    '.s-muhurat': 3800,  // Time to see wedding date & muhurat
+    '.s-sohola': 3600,   // Time to see wedding itinerary & schedule
+    '.s-venue': 3400     // Time to see venue details
+  };
 
-  function cancelAutoScroll(){
-    if(autoScrollTimer){clearTimeout(autoScrollTimer);autoScrollTimer=null;}
+  function scheduleNextPageAdvance(currentSelector){
+    if(autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+    var idx = pages.indexOf(currentSelector);
+    if(idx < 0 || idx >= pages.length - 1) return; // Stop at blessings page
+
+    var nextSelector = pages[idx + 1];
+    var waitTime = pageDelays[currentSelector] || 3200;
+
+    autoAdvanceTimer = setTimeout(function(){
+      if(userInteractedRecently) return;
+      var nextEl = document.querySelector(nextSelector);
+      if(!nextEl) return;
+      isAutoScrolling = true;
+      nextEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      setTimeout(function(){ isAutoScrolling = false; }, 1200);
+    }, waitTime);
   }
 
-  function triggerAutoScrollToNext(){
-    if(autoScrollDone || window.scrollY > 40) return;
-    autoScrollDone = true;
-
-    var couple = document.querySelector('.s-couple');
-    var hintEl = P('hint');
-    if(!couple) return;
-
-    if(hintEl) hintEl.classList.add('highlight');
-
-    // Smoothly scroll the user to Page 2 (The Couple) so aged guests don't have to guess how to scroll
-    couple.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-
-    setTimeout(function(){
-      if(hintEl) hintEl.classList.remove('highlight');
-    }, 1200);
-  }
-
-  // Allow users to pause or take over manual scroll if they interact beforehand
-  window.addEventListener('touchstart', cancelAutoScroll, {passive: true});
-  window.addEventListener('wheel', cancelAutoScroll, {passive: true});
-  window.addEventListener('scroll', function(){
-    if(window.scrollY > 40){
-      cancelAutoScroll();
-      autoScrollDone = true;
+  function initAutoPageTransitions(){
+    // Setup IntersectionObserver to track which screen is currently in focus
+    if(!('IntersectionObserver' in window)){
+      scheduleNextPageAdvance('.s-invoke');
+      return;
     }
-  }, {passive: true});
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting && !isAutoScrolling){
+          var matchedSelector = null;
+          for(var i = 0; i < pages.length; i++){
+            var pEl = document.querySelector(pages[i]);
+            if(pEl === entry.target){
+              matchedSelector = pages[i];
+              break;
+            }
+          }
+          if(matchedSelector && !userInteractedRecently){
+            scheduleNextPageAdvance(matchedSelector);
+          }
+        }
+      });
+    }, { threshold: 0.45 });
+
+    pages.forEach(function(sel){
+      var el = document.querySelector(sel);
+      if(el) observer.observe(el);
+    });
+
+    // Start with the first page after envelope opens
+    scheduleNextPageAdvance('.s-invoke');
+  }
+
+  // Handle user pause when manually interacting: pause auto-advance for 8 seconds, then resume gently
+  function markUserInteraction(){
+    userInteractedRecently = true;
+    if(autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+    if(userTouchTimeout) clearTimeout(userTouchTimeout);
+    userTouchTimeout = setTimeout(function(){
+      userInteractedRecently = false;
+      // Find whichever page is presently in view and re-queue advance
+      var bestPage = null, minDiff = Infinity;
+      pages.forEach(function(sel){
+        var el = document.querySelector(sel);
+        if(el){
+          var rect = el.getBoundingClientRect();
+          var diff = Math.abs(rect.top);
+          if(diff < minDiff){ minDiff = diff; bestPage = sel; }
+        }
+      });
+      if(bestPage) scheduleNextPageAdvance(bestPage);
+    }, 7000);
+  }
+
+  window.addEventListener('touchstart', markUserInteraction, { passive: true });
+  window.addEventListener('wheel', markUserInteraction, { passive: true });
 
   /* ===== Swipeable Date & Time Widget with 2-3 Demo Swipes ===== */
   var muhSw=P('muh-sw');
