@@ -451,11 +451,18 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 .badge-regrets{color:#c62828;font-weight:600}
 .admin-actions{display:flex;gap:10px;justify-content:flex-end}
 
+/* Suppress Netlify free badge if injected so it does not collide with floating controls */
+.netlify-badge, [data-netlify-badge], a[href*="netlify.com"][style*="position: fixed"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 @media (max-width:480px){
   #nav-dock button span{display:none}
   #nav-dock button{padding:7px 9px}
   #nav-dock button svg{width:15px;height:15px}
-  #btn-fab-rsvp{right:max(10px,env(safe-area-inset-right,0px));bottom:calc(56px + env(safe-area-inset-bottom,0px));padding:8px 12px;font-size:11px;gap:5px}
+  #btn-fab-rsvp{right:max(12px,env(safe-area-inset-right,0px));bottom:calc(64px + env(safe-area-inset-bottom,0px));padding:9px 13px;font-size:11px;gap:5px}
   #btn-fab-rsvp svg{width:14px;height:14px}
   #btn-admin-pill{top:calc(12px + env(safe-area-inset-top,0px));left:max(10px,env(safe-area-inset-left,0px));padding:6px 9px;font-size:9.5px;gap:4px}
   #btn-admin-pill svg{width:12px;height:12px}
