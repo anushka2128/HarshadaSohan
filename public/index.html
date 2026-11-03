@@ -292,7 +292,7 @@ input:disabled,select:disabled,textarea:disabled,.btn:disabled{opacity:.55;curso
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .empty{border:1px dashed var(--sand-2);padding:20px;text-align:center;color:var(--muted);font:italic 500 18px/1.4 var(--display);background:rgba(255,255,255,.6)}
 
-footer{background:var(--sage-ink);color:var(--ivory);text-align:center;padding:0 22px calc(80px + env(safe-area-inset-bottom,0px))}
+footer{background:var(--sage-ink);color:var(--ivory);text-align:center;padding:0 22px calc(110px + env(safe-area-inset-bottom,0px))}
 footer .warli{display:block;width:calc(100% + 44px);margin:0 -22px;height:auto;padding-top:30px}
 footer .deva{font:400 clamp(30px,9vw,38px)/1.75 var(--yatra);margin-top:10px;padding-inline:.12em}
 footer p{margin-top:6px;font:italic 500 19px/1.4 var(--display);opacity:.9}
@@ -368,6 +368,13 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 #btn-admin-pill:hover{background:var(--ivory);color:var(--kumkum);border-color:var(--gold)}
 #btn-admin-pill.hide{opacity:0;pointer-events:none}
 #btn-admin-pill svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Floating Controls Responsive Layering on Small Screens (< 640px) to prevent overlap */
+@media (max-width:640px){
+  #nav-dock{bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:4px 6px;max-width:calc(100% - 16px)}
+  #btn-fab-rsvp{bottom:calc(60px + env(safe-area-inset-bottom,0px));right:max(12px,env(safe-area-inset-right,0px));padding:9px 15px;font-size:11.5px;gap:6px}
+  #btn-admin-pill{bottom:calc(60px + env(safe-area-inset-bottom,0px));left:max(12px,env(safe-area-inset-left,0px));padding:7px 11px;font-size:10px}
+}
 
 /* Modal Overlays & Sheets */
 .hs-modal-backdrop{position:fixed;inset:0;background:rgba(30,6,10,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:900;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));opacity:0;pointer-events:none;transition:opacity .3s ease}
@@ -446,11 +453,11 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 
 @media (max-width:480px){
   #nav-dock button span{display:none}
-  #nav-dock button{padding:8px 10px}
-  #nav-dock button svg{width:16px;height:16px}
-  #btn-fab-rsvp{right:max(10px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));padding:8px 13px;font-size:11px;gap:6px}
+  #nav-dock button{padding:7px 9px}
+  #nav-dock button svg{width:15px;height:15px}
+  #btn-fab-rsvp{right:max(10px,env(safe-area-inset-right,0px));bottom:calc(56px + env(safe-area-inset-bottom,0px));padding:8px 12px;font-size:11px;gap:5px}
   #btn-fab-rsvp svg{width:14px;height:14px}
-  #btn-admin-pill{left:max(10px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));padding:6px 9px;font-size:9.5px;gap:4px}
+  #btn-admin-pill{left:max(10px,env(safe-area-inset-left,0px));bottom:calc(56px + env(safe-area-inset-bottom,0px));padding:6px 9px;font-size:9.5px;gap:4px}
   #btn-admin-pill svg{width:12px;height:12px}
   .hs-modal-card{padding:20px 15px;border-radius:14px}
   .rsvp-header h2{font-size:21px}
