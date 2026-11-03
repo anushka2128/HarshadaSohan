@@ -1223,7 +1223,14 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   /* ===== Automatic Smooth Sequential Page Navigation for Elderly Guests ===== */
   var autoAdvanceTimer = null;
   var pages = ['.s-invoke', '.s-couple', '.s-muhurat', '.s-sohola', '.s-venue', '.s-bless'];
-  var pageDurations = [2800, 3600, 3800, 3600, 3400, 4000];
+  /* Ensure all entrance fade/slide transitions and full reading time complete on each page before navigating:
+     - Page 1 (.s-invoke): 4.5s (Ganesh shloka entrance + blessing reading)
+     - Page 2 (.s-couple): 5.5s (Bride & Groom slide-in from left/right + parent names reading)
+     - Page 3 (.s-muhurat): 5.5s (Shubh Muhurat card entrance + date/time inspection)
+     - Page 4 (.s-sohola): 5.5s (Ceremony itinerary item cascades + schedule reading)
+     - Page 5 (.s-venue): 4.5s (Venue card entrance & location details)
+  */
+  var pageDurations = [4500, 5500, 5500, 5500, 4500, 4500];
   var currentPageIndex = 0;
   var autoAdvanceRunning = false;
   var manualPauseTimeout = null;
@@ -1241,7 +1248,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
       autoAdvanceRunning = false;
       return;
     }
-    var delay = pageDurations[currentPageIndex] || 3200;
+    var delay = pageDurations[currentPageIndex] || 5000;
     autoAdvanceTimer = setTimeout(function(){
       currentPageIndex++;
       scrollToPageIndex(currentPageIndex);
@@ -1256,14 +1263,13 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
     advanceNextStep();
   }
 
-  // When a guest manually touches or scrolls, pause the auto-tour briefly (5s),
-  // detect which section they are currently on, and then seamlessly resume auto-advancing from that section!
+  // When a guest manually touches or scrolls, pause the auto-tour briefly (7s) so they are uninterrupted,
+  // then detect which section they are viewing and resume advancing from that section!
   function onUserManualScrollOrTouch(){
     if(autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
     if(manualPauseTimeout) clearTimeout(manualPauseTimeout);
 
     manualPauseTimeout = setTimeout(function(){
-      // Find whichever section is currently closest to the top of the viewport
       var bestIdx = 0, minDiff = Infinity;
       pages.forEach(function(sel, i){
         var el = document.querySelector(sel);
@@ -1280,7 +1286,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
         autoAdvanceRunning = true;
         advanceNextStep();
       }
-    }, 5000);
+    }, 7000);
   }
 
   window.addEventListener('touchstart', onUserManualScrollOrTouch, { passive: true });
