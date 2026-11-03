@@ -1220,92 +1220,71 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   hint.addEventListener('click',function(){var n=document.querySelector('.s-couple');if(n)n.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});});
   window.addEventListener('scroll',function(){hint.classList.toggle('gone',window.scrollY>40);},{passive:true});
 
-  /* ===== Automatic Smooth Scroll: Progresses from page to page after transitions complete ===== */
-  var autoAdvanceTimer = null, isAutoScrolling = false, userInteractedRecently = false, userTouchTimeout = null;
+  /* ===== Automatic Smooth Sequential Page Navigation for Elderly Guests ===== */
+  var autoAdvanceTimer = null;
   var pages = ['.s-invoke', '.s-couple', '.s-muhurat', '.s-sohola', '.s-venue', '.s-bless'];
-  var pageDelays = {
-    '.s-invoke': 2600,   // Initial Ganesh greeting + shloka
-    '.s-couple': 3600,   // Time to read bride & groom details
-    '.s-muhurat': 3800,  // Time to see wedding date & muhurat
-    '.s-sohola': 3600,   // Time to see wedding itinerary & schedule
-    '.s-venue': 3400     // Time to see venue details
-  };
+  var pageDurations = [2800, 3600, 3800, 3600, 3400, 4000];
+  var currentPageIndex = 0;
+  var autoAdvanceRunning = false;
+  var manualPauseTimeout = null;
 
-  function scheduleNextPageAdvance(currentSelector){
-    if(autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
-    var idx = pages.indexOf(currentSelector);
-    if(idx < 0 || idx >= pages.length - 1) return; // Stop at blessings page
+  function scrollToPageIndex(idx){
+    if(idx < 0 || idx >= pages.length) return;
+    currentPageIndex = idx;
+    var targetEl = document.querySelector(pages[idx]);
+    if(!targetEl) return;
+    targetEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
 
-    var nextSelector = pages[idx + 1];
-    var waitTime = pageDelays[currentSelector] || 3200;
-
+  function advanceNextStep(){
+    if(currentPageIndex >= pages.length - 1){
+      autoAdvanceRunning = false;
+      return;
+    }
+    var delay = pageDurations[currentPageIndex] || 3200;
     autoAdvanceTimer = setTimeout(function(){
-      if(userInteractedRecently) return;
-      var nextEl = document.querySelector(nextSelector);
-      if(!nextEl) return;
-      isAutoScrolling = true;
-      nextEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-      setTimeout(function(){ isAutoScrolling = false; }, 1200);
-    }, waitTime);
+      currentPageIndex++;
+      scrollToPageIndex(currentPageIndex);
+      advanceNextStep();
+    }, delay);
   }
 
   function initAutoPageTransitions(){
-    // Setup IntersectionObserver to track which screen is currently in focus
-    if(!('IntersectionObserver' in window)){
-      scheduleNextPageAdvance('.s-invoke');
-      return;
-    }
-
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting && !isAutoScrolling){
-          var matchedSelector = null;
-          for(var i = 0; i < pages.length; i++){
-            var pEl = document.querySelector(pages[i]);
-            if(pEl === entry.target){
-              matchedSelector = pages[i];
-              break;
-            }
-          }
-          if(matchedSelector && !userInteractedRecently){
-            scheduleNextPageAdvance(matchedSelector);
-          }
-        }
-      });
-    }, { threshold: 0.45 });
-
-    pages.forEach(function(sel){
-      var el = document.querySelector(sel);
-      if(el) observer.observe(el);
-    });
-
-    // Start with the first page after envelope opens
-    scheduleNextPageAdvance('.s-invoke');
+    if(autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+    currentPageIndex = 0;
+    autoAdvanceRunning = true;
+    advanceNextStep();
   }
 
-  // Handle user pause when manually interacting: pause auto-advance for 8 seconds, then resume gently
-  function markUserInteraction(){
-    userInteractedRecently = true;
+  // When a guest manually touches or scrolls, pause the auto-tour briefly (5s),
+  // detect which section they are currently on, and then seamlessly resume auto-advancing from that section!
+  function onUserManualScrollOrTouch(){
     if(autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
-    if(userTouchTimeout) clearTimeout(userTouchTimeout);
-    userTouchTimeout = setTimeout(function(){
-      userInteractedRecently = false;
-      // Find whichever page is presently in view and re-queue advance
-      var bestPage = null, minDiff = Infinity;
-      pages.forEach(function(sel){
+    if(manualPauseTimeout) clearTimeout(manualPauseTimeout);
+
+    manualPauseTimeout = setTimeout(function(){
+      // Find whichever section is currently closest to the top of the viewport
+      var bestIdx = 0, minDiff = Infinity;
+      pages.forEach(function(sel, i){
         var el = document.querySelector(sel);
         if(el){
-          var rect = el.getBoundingClientRect();
-          var diff = Math.abs(rect.top);
-          if(diff < minDiff){ minDiff = diff; bestPage = sel; }
+          var diff = Math.abs(el.getBoundingClientRect().top);
+          if(diff < minDiff){
+            minDiff = diff;
+            bestIdx = i;
+          }
         }
       });
-      if(bestPage) scheduleNextPageAdvance(bestPage);
-    }, 7000);
+      currentPageIndex = bestIdx;
+      if(currentPageIndex < pages.length - 1){
+        autoAdvanceRunning = true;
+        advanceNextStep();
+      }
+    }, 5000);
   }
 
-  window.addEventListener('touchstart', markUserInteraction, { passive: true });
-  window.addEventListener('wheel', markUserInteraction, { passive: true });
+  window.addEventListener('touchstart', onUserManualScrollOrTouch, { passive: true });
+  window.addEventListener('wheel', onUserManualScrollOrTouch, { passive: true });
 
   /* ===== Swipeable Date & Time Widget with 2-3 Demo Swipes ===== */
   var muhSw=P('muh-sw');
