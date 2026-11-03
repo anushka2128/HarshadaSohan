@@ -931,8 +931,8 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
         var fab=P('btn-fab-rsvp');if(fab)fab.classList.remove('hide');
         var adm=P('btn-admin-pill');if(adm)adm.classList.remove('hide');
         setTimeout(function(){if(!scratched&&!revealed)paintCard();}, 300);
-        // Automatically scroll to peek at Page 2 once Page 1 entrance is complete!
-        setTimeout(triggerAutoScrollPeek, 1300);
+        // Automatically scroll smoothly to Page 2 after viewing Page 1 so aged guests can read effortlessly
+        autoScrollTimer = setTimeout(triggerAutoScrollToNext, 2200);
       },reduce?0:820);
     });
   }
@@ -1212,61 +1212,38 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   hint.addEventListener('click',function(){var n=document.querySelector('.s-couple');if(n)n.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});});
   window.addEventListener('scroll',function(){hint.classList.toggle('gone',window.scrollY>40);},{passive:true});
 
-  /* ===== Automatic Peek Scroll from Page 1 to Page 2 ===== */
-  var autoPeekActive=false, autoPeekTimer=null;
+  /* ===== Automatic Smooth Scroll to Page 2 after Envelope Opens ===== */
+  var autoScrollDone=false, autoScrollTimer=null;
 
-  function cancelAutoPeek(){
-    if(autoPeekTimer){clearTimeout(autoPeekTimer);autoPeekTimer=null;}
-    autoPeekActive=false;
-    var hintEl=P('hint');if(hintEl)hintEl.classList.remove('highlight');
+  function cancelAutoScroll(){
+    if(autoScrollTimer){clearTimeout(autoScrollTimer);autoScrollTimer=null;}
   }
 
-  function triggerAutoScrollPeek(){
-    if(reduce || window.scrollY > 30 || autoPeekActive) return;
-    autoPeekActive = true;
+  function triggerAutoScrollToNext(){
+    if(autoScrollDone || window.scrollY > 40) return;
+    autoScrollDone = true;
 
     var couple = document.querySelector('.s-couple');
     var hintEl = P('hint');
-    if(!couple){ autoPeekActive = false; return; }
-
-    var coupleTop = couple.offsetTop || 0;
-    var peekScroll = Math.max(180, Math.min(coupleTop - 100, window.innerHeight * 0.44));
+    if(!couple) return;
 
     if(hintEl) hintEl.classList.add('highlight');
 
-    // Smooth automatic scroll down towards Page 2
-    window.scrollTo({ top: peekScroll, behavior: 'smooth' });
+    // Smoothly scroll the user to Page 2 (The Couple) so aged guests don't have to guess how to scroll
+    couple.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
 
-    // Hold for 1.3 seconds so the viewer clearly perceives Page 2 peeking up
-    autoPeekTimer = setTimeout(function(){
-      if(!autoPeekActive || window.scrollY < 20){
-        if(hintEl) hintEl.classList.remove('highlight');
-        autoPeekActive = false;
-        return;
-      }
-      // Smoothly scroll back up to Page 1
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(function(){
       if(hintEl) hintEl.classList.remove('highlight');
-
-      setTimeout(function(){
-        autoPeekActive = false;
-        scheduleNextPeek();
-      }, 700);
-    }, 1300);
+    }, 1200);
   }
 
-  function scheduleNextPeek(){
-    cancelAutoPeek();
-    if(reduce || window.scrollY > 30) return;
-    autoPeekTimer = setTimeout(triggerAutoScrollPeek, 8500);
-  }
-
-  // Cancel immediately if the user touches the screen, wheels, or manually navigates
-  window.addEventListener('touchstart', cancelAutoPeek, {passive: true});
-  window.addEventListener('wheel', cancelAutoPeek, {passive: true});
+  // Allow users to pause or take over manual scroll if they interact beforehand
+  window.addEventListener('touchstart', cancelAutoScroll, {passive: true});
+  window.addEventListener('wheel', cancelAutoScroll, {passive: true});
   window.addEventListener('scroll', function(){
-    if(window.scrollY > 40 && !autoPeekActive){
-      cancelAutoPeek();
+    if(window.scrollY > 40){
+      cancelAutoScroll();
+      autoScrollDone = true;
     }
   }, {passive: true});
 
