@@ -357,23 +357,23 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
 #nav-dock button svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 #nav-dock button:hover,#nav-dock button.active{background:var(--kumkum);color:var(--ivory)}
 
-/* Floating RSVP FAB */
+/* Floating RSVP FAB (Primary Action) */
 #btn-fab-rsvp{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:66;display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:linear-gradient(135deg,var(--kumkum),#6b1522);color:var(--ivory);font:600 13px/1 var(--cin);letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(232,163,23,.5);box-shadow:0 6px 20px rgba(74,22,32,.35),0 0 12px rgba(232,163,23,.25);cursor:pointer;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease,opacity .3s ease}
 #btn-fab-rsvp:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 24px rgba(74,22,32,.45),0 0 16px rgba(232,163,23,.4)}
 #btn-fab-rsvp.hide{opacity:0;pointer-events:none;transform:translateY(20px)}
 #btn-fab-rsvp svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* Admin Family View Pill */
-#btn-admin-pill{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:64;display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;background:rgba(251,246,233,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--sand-2);color:var(--sage-ink);font:600 11px/1 var(--cin);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px rgba(74,22,32,.12);transition:all .25s ease}
+/* Admin Family View Pill - Separated into top-left safe corner to guarantee zero overlap */
+#btn-admin-pill{position:fixed;left:max(14px,env(safe-area-inset-left,0px));top:calc(14px + env(safe-area-inset-top,0px));z-index:64;display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;background:rgba(251,246,233,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--sand-2);color:var(--sage-ink);font:600 11px/1 var(--cin);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px rgba(74,22,32,.12);transition:all .25s ease}
 #btn-admin-pill:hover{background:var(--ivory);color:var(--kumkum);border-color:var(--gold)}
-#btn-admin-pill.hide{opacity:0;pointer-events:none}
+#btn-admin-pill.hide{opacity:0;pointer-events:none;transform:translateY(-20px)}
 #btn-admin-pill svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* Floating Controls Responsive Layering on Small Screens (< 640px) to prevent overlap */
+/* Floating Controls Responsive Layering on Small Screens (< 640px) */
 @media (max-width:640px){
   #nav-dock{bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:4px 6px;max-width:calc(100% - 16px)}
-  #btn-fab-rsvp{bottom:calc(60px + env(safe-area-inset-bottom,0px));right:max(12px,env(safe-area-inset-right,0px));padding:9px 15px;font-size:11.5px;gap:6px}
-  #btn-admin-pill{bottom:calc(60px + env(safe-area-inset-bottom,0px));left:max(12px,env(safe-area-inset-left,0px));padding:7px 11px;font-size:10px}
+  #btn-fab-rsvp{bottom:calc(62px + env(safe-area-inset-bottom,0px));right:max(12px,env(safe-area-inset-right,0px));padding:9px 15px;font-size:11.5px;gap:6px}
+  #btn-admin-pill{top:calc(12px + env(safe-area-inset-top,0px));left:max(12px,env(safe-area-inset-left,0px));padding:6px 11px;font-size:10px}
 }
 
 /* Modal Overlays & Sheets */
@@ -457,12 +457,11 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
   #nav-dock button svg{width:15px;height:15px}
   #btn-fab-rsvp{right:max(10px,env(safe-area-inset-right,0px));bottom:calc(56px + env(safe-area-inset-bottom,0px));padding:8px 12px;font-size:11px;gap:5px}
   #btn-fab-rsvp svg{width:14px;height:14px}
-  #btn-admin-pill{left:max(10px,env(safe-area-inset-left,0px));bottom:calc(56px + env(safe-area-inset-bottom,0px));padding:6px 9px;font-size:9.5px;gap:4px}
+  #btn-admin-pill{top:calc(12px + env(safe-area-inset-top,0px));left:max(10px,env(safe-area-inset-left,0px));padding:6px 9px;font-size:9.5px;gap:4px}
   #btn-admin-pill svg{width:12px;height:12px}
   .hs-modal-card{padding:20px 15px;border-radius:14px}
   .rsvp-header h2{font-size:21px}
   .attend-btn{font-size:12px;padding:10px 8px}
-  .food-pill{font-size:11px;padding:9px 6px}
   .admin-stat .num{font-size:20px}
   .admin-stat.full .num{font-size:24px}
 }
