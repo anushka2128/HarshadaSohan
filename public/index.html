@@ -720,14 +720,6 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
           </div>
 
           <div class="rsvp-field">
-            <label class="rsvp-label">Food Preference</label>
-            <div class="food-group">
-              <button type="button" class="food-pill active" id="food-veg" data-val="Vegetarian">🌱 Vegetarian</button>
-              <button type="button" class="food-pill" id="food-nonveg" data-val="Non-Vegetarian">🍗 Non-Vegetarian</button>
-            </div>
-          </div>
-
-          <div class="rsvp-field">
             <label class="rsvp-label">Ceremonies You Are Joining</label>
             <label class="event-item">
               <input type="checkbox" id="ev-haldi" value="Haldi Ceremony - Dec 2 (11:30 AM)">
@@ -776,7 +768,7 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
     <button type="button" class="hs-modal-close" id="admin-modal-close" aria-label="Close admin dialog">&times;</button>
     <div class="rsvp-header">
       <h2 id="admin-title">Family View ⚜️</h2>
-      <p>Alisha &amp; Family RSVP Dashboard</p>
+      <p>Harshada &amp; Sohan RSVP Dashboard</p>
     </div>
 
     <!-- PIN Screen -->
@@ -804,14 +796,6 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
           <div class="num" id="stat-regrets" style="color:#c62828;">0</div>
           <div class="lbl">Regrets</div>
         </div>
-        <div class="admin-stat">
-          <div class="num" id="stat-veg" style="color:#2e7d32;">0</div>
-          <div class="lbl">Vegetarian</div>
-        </div>
-        <div class="admin-stat">
-          <div class="num" id="stat-nonveg" style="color:#e65100;">0</div>
-          <div class="lbl">Non-Veg</div>
-        </div>
       </div>
 
       <label class="rsvp-label">Guest Responses</label>
@@ -822,11 +806,10 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
               <th>Guest Name</th>
               <th>Status</th>
               <th>Count</th>
-              <th>Food</th>
             </tr>
           </thead>
           <tbody id="admin-guest-tbody">
-            <tr><td colspan="4" style="text-align:center;color:var(--sage-ink);padding:14px;">Loading responses...</td></tr>
+            <tr><td colspan="3" style="text-align:center;color:var(--sage-ink);padding:14px;">Loading responses...</td></tr>
           </tbody>
         </table>
       </div>
@@ -1919,14 +1902,11 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
     var statTotalGuests=P('stat-total-guests');
     var statResponses=P('stat-responses');
     var statRegrets=P('stat-regrets');
-    var statVeg=P('stat-veg');
-    var statNonveg=P('stat-nonveg');
 
     // Form State
     var state={
       attending:true,
-      guestCount:1,
-      foodPreference:'Vegetarian'
+      guestCount:1
     };
 
     // Auto-prefill Guest Name from URL parameter (e.g. ?guest=SharmaFamily or ?name=...)
@@ -2005,20 +1985,6 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
       });
     }
 
-    // Food Preference Pills
-    if(foodVeg&&foodNonveg){
-      foodVeg.addEventListener('click',function(){
-        state.foodPreference='Vegetarian';
-        foodVeg.classList.add('active');
-        foodNonveg.classList.remove('active');
-      });
-      foodNonveg.addEventListener('click',function(){
-        state.foodPreference='Non-Vegetarian';
-        foodNonveg.classList.add('active');
-        foodVeg.classList.remove('active');
-      });
-    }
-
     // RSVP Form Submission with Smart Upsert
     if(rsvpForm){
       rsvpForm.addEventListener('submit',function(e){
@@ -2039,7 +2005,6 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
           guestName:guestName,
           attending:state.attending,
           guestCount:state.attending?state.guestCount:0,
-          foodPreference:state.attending?state.foodPreference:'N/A',
           events:events,
           updatedAt:new Date().toISOString(),
           ts:Date.now()
@@ -2162,36 +2127,27 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
       var totalConfirmedGuests=0;
       var totalResponses=cachedRsvpList.length;
       var regretsCount=0;
-      var vegCount=0;
-      var nonVegCount=0;
 
       var rowsHtml='';
 
       if(!cachedRsvpList.length){
-        rowsHtml='<tr><td colspan="4" style="text-align:center;color:var(--sage-ink);padding:14px;">No RSVP responses received yet.</td></tr>';
+        rowsHtml='<tr><td colspan="3" style="text-align:center;color:var(--sage-ink);padding:14px;">No RSVP responses received yet.</td></tr>';
       }else{
         cachedRsvpList.forEach(function(r){
           var isAttending=r.attending!==false;
           var count=isAttending?(parseInt(r.guestCount,10)||1):0;
           if(isAttending){
             totalConfirmedGuests+=count;
-            if(r.foodPreference==='Non-Vegetarian'){
-              nonVegCount+=count;
-            }else{
-              vegCount+=count;
-            }
           }else{
             regretsCount++;
           }
 
           var statusBadge=isAttending?'<span class="badge-attending">Attending</span>':'<span class="badge-regrets">Regrets</span>';
-          var foodBadge=isAttending?(r.foodPreference==='Non-Vegetarian'?'🍗 Non-Veg':'🌱 Veg'):'—';
 
           rowsHtml+='<tr>'+
             '<td style="font-weight:600;">'+(r.guestName||'Anonymous')+'</td>'+
             '<td>'+statusBadge+'</td>'+
             '<td>'+(isAttending?count:'0')+'</td>'+
-            '<td>'+foodBadge+'</td>'+
           '</tr>';
         });
       }
@@ -2199,14 +2155,12 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
       if(statTotalGuests)statTotalGuests.textContent=totalConfirmedGuests;
       if(statResponses)statResponses.textContent=totalResponses;
       if(statRegrets)statRegrets.textContent=regretsCount;
-      if(statVeg)statVeg.textContent=vegCount;
-      if(statNonveg)statNonveg.textContent=nonVegCount;
       if(guestTbody)guestTbody.innerHTML=rowsHtml;
     }
 
     function fetchAdminStats(){
       if(guestTbody){
-        guestTbody.innerHTML='<tr><td colspan="4" style="text-align:center;color:var(--sage-ink);padding:14px;">Refreshing data...</td></tr>';
+        guestTbody.innerHTML='<tr><td colspan="3" style="text-align:center;color:var(--sage-ink);padding:14px;">Refreshing data...</td></tr>';
       }
       if(db){
         db.collection(RSVP_COLLECTION).orderBy('ts','desc').get().then(function(snap){
@@ -2236,7 +2190,6 @@ html.rv-on .rv.zoom:not(.in){transform:scale(.92);filter:blur(4px)}
             'Guest / Family Name':r.guestName||'',
             'Attending':r.attending?'Yes':'Regrets',
             'Guest Count':r.attending?(r.guestCount||1):0,
-            'Food Preference':r.foodPreference||'N/A',
             'Events':Array.isArray(r.events)?r.events.join(', '):'',
             'Timestamp':r.updatedAt||(r.ts?new Date(r.ts).toLocaleString('en-IN'):'')
           };
